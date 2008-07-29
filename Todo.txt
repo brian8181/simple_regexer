@@ -1,0 +1,2 @@
+1. groups need to be displayed in someway.
+2. file save should save both panes or seperart pane.
