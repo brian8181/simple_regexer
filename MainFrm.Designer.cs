@@ -29,15 +29,17 @@ namespace ReallySimpleRegEx
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup( "ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left );
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup( "ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left );
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup( "ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left );
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup( "ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left );
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup( "ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left );
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup( "ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left );
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager( typeof( MainFrm ) );
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.top_Spliter = new System.Windows.Forms.SplitContainer();
             this.rtb_regx = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip( this.components );
             this.mnMatchList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnMatchSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.listView = new System.Windows.Forms.ListView();
             this.cText = new System.Windows.Forms.ColumnHeader();
             this.cIndex = new System.Windows.Forms.ColumnHeader();
@@ -63,6 +65,7 @@ namespace ReallySimpleRegEx
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnToolsAutoMatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnToolEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnToolSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,8 +82,6 @@ namespace ReallySimpleRegEx
             this.ss_status = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblFileSaveStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -110,7 +111,7 @@ namespace ReallySimpleRegEx
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add( this.rtb_input );
-            this.splitContainer1.Size = new System.Drawing.Size( 668, 570 );
+            this.splitContainer1.Size = new System.Drawing.Size( 831, 570 );
             this.splitContainer1.SplitterDistance = 205;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -127,8 +128,8 @@ namespace ReallySimpleRegEx
             // top_Spliter.Panel2
             // 
             this.top_Spliter.Panel2.Controls.Add( this.listView );
-            this.top_Spliter.Size = new System.Drawing.Size( 668, 205 );
-            this.top_Spliter.SplitterDistance = 372;
+            this.top_Spliter.Size = new System.Drawing.Size( 831, 205 );
+            this.top_Spliter.SplitterDistance = 462;
             this.top_Spliter.TabIndex = 0;
             // 
             // rtb_regx
@@ -138,8 +139,9 @@ namespace ReallySimpleRegEx
             this.rtb_regx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_regx.Location = new System.Drawing.Point( 0, 0 );
             this.rtb_regx.Name = "rtb_regx";
-            this.rtb_regx.Size = new System.Drawing.Size( 372, 205 );
+            this.rtb_regx.Size = new System.Drawing.Size( 462, 205 );
             this.rtb_regx.TabIndex = 0;
+            this.rtb_regx.Text = "";
             this.rtb_regx.Enter += new System.EventHandler( this.rtb_regx_Enter );
             this.rtb_regx.Leave += new System.EventHandler( this.rtb_regx_Leave );
             this.rtb_regx.TextChanged += new System.EventHandler( this.rtb_TextChanged );
@@ -148,9 +150,10 @@ namespace ReallySimpleRegEx
             // 
             this.contextMenuStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[] {
             this.mnMatchList,
-            this.toolStripMenuItem1} );
+            this.toolStripMenuItem1,
+            this.mnMatchSelected} );
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size( 141, 48 );
+            this.contextMenuStrip.Size = new System.Drawing.Size( 205, 70 );
             // 
             // mnMatchList
             // 
@@ -158,9 +161,26 @@ namespace ReallySimpleRegEx
             this.mnMatchList.CheckOnClick = true;
             this.mnMatchList.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnMatchList.Name = "mnMatchList";
-            this.mnMatchList.Size = new System.Drawing.Size( 140, 22 );
+            this.mnMatchList.Size = new System.Drawing.Size( 204, 22 );
             this.mnMatchList.Text = "Match List";
             this.mnMatchList.Click += new System.EventHandler( this.mnMatchList_Click );
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Checked = true;
+            this.toolStripMenuItem1.CheckOnClick = true;
+            this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size( 204, 22 );
+            this.toolStripMenuItem1.Text = "Auto Match";
+            // 
+            // mnMatchSelected
+            // 
+            this.mnMatchSelected.Name = "mnMatchSelected";
+            this.mnMatchSelected.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5 ) ) );
+            this.mnMatchSelected.Size = new System.Drawing.Size( 204, 22 );
+            this.mnMatchSelected.Text = "Match Selection";
+            this.mnMatchSelected.Click += new System.EventHandler( this.mnMatchSelected_Click );
             // 
             // listView
             // 
@@ -172,31 +192,32 @@ namespace ReallySimpleRegEx
             this.listView.ContextMenuStrip = this.contextMenuStrip;
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.GridLines = true;
-            listViewGroup4.Header = "ListViewGroup";
-            listViewGroup4.Name = "listViewGroup1";
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup2";
-            listViewGroup6.Header = "ListViewGroup";
-            listViewGroup6.Name = "listViewGroup3";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Name = "listViewGroup2";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup3";
             this.listView.Groups.AddRange( new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6} );
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3} );
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView.LabelWrap = false;
             this.listView.Location = new System.Drawing.Point( 0, 0 );
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.ShowGroups = false;
-            this.listView.Size = new System.Drawing.Size( 292, 205 );
+            this.listView.Size = new System.Drawing.Size( 365, 205 );
             this.listView.TabIndex = 3;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.SelectedIndexChanged += new System.EventHandler( this.listView_SelectedIndexChanged );
             // 
             // cText
             // 
             this.cText.Text = "Text";
-            this.cText.Width = 225;
+            this.cText.Width = 46;
             // 
             // cIndex
             // 
@@ -214,8 +235,9 @@ namespace ReallySimpleRegEx
             this.rtb_input.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_input.Location = new System.Drawing.Point( 0, 0 );
             this.rtb_input.Name = "rtb_input";
-            this.rtb_input.Size = new System.Drawing.Size( 668, 361 );
+            this.rtb_input.Size = new System.Drawing.Size( 831, 361 );
             this.rtb_input.TabIndex = 0;
+            this.rtb_input.Text = "";
             this.rtb_input.Enter += new System.EventHandler( this.rtb_input_Enter );
             this.rtb_input.Leave += new System.EventHandler( this.rtb_input_Leave );
             // 
@@ -229,7 +251,7 @@ namespace ReallySimpleRegEx
             this.helpToolStripMenuItem} );
             this.menuStrip.Location = new System.Drawing.Point( 0, 0 );
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size( 668, 24 );
+            this.menuStrip.Size = new System.Drawing.Size( 831, 24 );
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "mnStrip";
             // 
@@ -251,40 +273,40 @@ namespace ReallySimpleRegEx
             this.mnFileOpen.Image = ( (System.Drawing.Image)( resources.GetObject( "mnFileOpen.Image" ) ) );
             this.mnFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnFileOpen.Name = "mnFileOpen";
-            this.mnFileOpen.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileOpen.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileOpen.Text = "&Open";
             this.mnFileOpen.Click += new System.EventHandler( this.mnFileOpen_Click );
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator.Size = new System.Drawing.Size( 121, 6 );
             // 
             // mnFileSave
             // 
             this.mnFileSave.Image = ( (System.Drawing.Image)( resources.GetObject( "mnFileSave.Image" ) ) );
             this.mnFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnFileSave.Name = "mnFileSave";
-            this.mnFileSave.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileSave.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileSave.Text = "&Save";
             this.mnFileSave.Click += new System.EventHandler( this.mnFileSave_Click );
             // 
             // mnFileSaveAs
             // 
             this.mnFileSaveAs.Name = "mnFileSaveAs";
-            this.mnFileSaveAs.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileSaveAs.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileSaveAs.Text = "Save &As";
             this.mnFileSaveAs.Click += new System.EventHandler( this.mnFileSaveAs_Click );
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator1.Size = new System.Drawing.Size( 121, 6 );
             // 
             // mnFileExit
             // 
             this.mnFileExit.Name = "mnFileExit";
-            this.mnFileExit.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileExit.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileExit.Text = "E&xit";
             this.mnFileExit.Click += new System.EventHandler( this.mnFileExit_Click );
             // 
@@ -306,26 +328,26 @@ namespace ReallySimpleRegEx
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.undoToolStripMenuItem.Text = "&Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.redoToolStripMenuItem.Text = "&Redo";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator3.Size = new System.Drawing.Size( 125, 6 );
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Image = ( (System.Drawing.Image)( resources.GetObject( "cutToolStripMenuItem.Image" ) ) );
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.cutToolStripMenuItem.Text = "Cu&t";
             // 
             // copyToolStripMenuItem
@@ -333,7 +355,7 @@ namespace ReallySimpleRegEx
             this.copyToolStripMenuItem.Image = ( (System.Drawing.Image)( resources.GetObject( "copyToolStripMenuItem.Image" ) ) );
             this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.copyToolStripMenuItem.Text = "&Copy";
             // 
             // pasteToolStripMenuItem
@@ -341,18 +363,18 @@ namespace ReallySimpleRegEx
             this.pasteToolStripMenuItem.Image = ( (System.Drawing.Image)( resources.GetObject( "pasteToolStripMenuItem.Image" ) ) );
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.pasteToolStripMenuItem.Text = "&Paste";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator4.Size = new System.Drawing.Size( 125, 6 );
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.selectAllToolStripMenuItem.Text = "Select &All";
             // 
             // toolsToolStripMenuItem
@@ -370,7 +392,7 @@ namespace ReallySimpleRegEx
             this.mnToolsAutoMatch,
             this.toolStripMenuItem3} );
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size( 124, 22 );
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // mnToolsAutoMatch
@@ -379,9 +401,18 @@ namespace ReallySimpleRegEx
             this.mnToolsAutoMatch.CheckOnClick = true;
             this.mnToolsAutoMatch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnToolsAutoMatch.Name = "mnToolsAutoMatch";
-            this.mnToolsAutoMatch.Size = new System.Drawing.Size( 152, 22 );
+            this.mnToolsAutoMatch.Size = new System.Drawing.Size( 140, 22 );
             this.mnToolsAutoMatch.Text = "Auto Match";
             this.mnToolsAutoMatch.Click += new System.EventHandler( this.mnToolsAutoMatch_Click );
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Checked = true;
+            this.toolStripMenuItem3.CheckOnClick = true;
+            this.toolStripMenuItem3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size( 140, 22 );
+            this.toolStripMenuItem3.Text = "Match List";
             // 
             // toolStripMenuItem2
             // 
@@ -391,7 +422,7 @@ namespace ReallySimpleRegEx
             this.mnToolReload,
             this.mnToolReset} );
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size( 152, 22 );
+            this.toolStripMenuItem2.Size = new System.Drawing.Size( 124, 22 );
             this.toolStripMenuItem2.Text = "Settings";
             // 
             // mnToolEdit
@@ -435,18 +466,18 @@ namespace ReallySimpleRegEx
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size( 129, 22 );
             this.contentsToolStripMenuItem.Text = "&Contents";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator5.Size = new System.Drawing.Size( 126, 6 );
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size( 129, 22 );
             this.aboutToolStripMenuItem.Text = "&About...";
             // 
             // timer
@@ -463,7 +494,7 @@ namespace ReallySimpleRegEx
             this.lblFileSaveStatus} );
             this.statusStrip.Location = new System.Drawing.Point( 0, 0 );
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size( 668, 22 );
+            this.statusStrip.Size = new System.Drawing.Size( 831, 22 );
             this.statusStrip.TabIndex = 1;
             // 
             // lbl
@@ -494,7 +525,7 @@ namespace ReallySimpleRegEx
             this.ss_status.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.ss_status.Name = "ss_status";
             this.ss_status.Padding = new System.Windows.Forms.Padding( 50, 0, 0, 0 );
-            this.ss_status.Size = new System.Drawing.Size( 529, 17 );
+            this.ss_status.Size = new System.Drawing.Size( 692, 17 );
             this.ss_status.Spring = true;
             this.ss_status.Text = "Ready";
             // 
@@ -520,11 +551,11 @@ namespace ReallySimpleRegEx
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add( this.splitContainer1 );
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size( 668, 570 );
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size( 831, 570 );
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point( 0, 0 );
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size( 668, 616 );
+            this.toolStripContainer1.Size = new System.Drawing.Size( 831, 616 );
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -532,29 +563,11 @@ namespace ReallySimpleRegEx
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add( this.menuStrip );
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Checked = true;
-            this.toolStripMenuItem1.CheckOnClick = true;
-            this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size( 140, 22 );
-            this.toolStripMenuItem1.Text = "Auto Match";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Checked = true;
-            this.toolStripMenuItem3.CheckOnClick = true;
-            this.toolStripMenuItem3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size( 152, 22 );
-            this.toolStripMenuItem3.Text = "Match List";
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 13F );
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size( 668, 616 );
+            this.ClientSize = new System.Drawing.Size( 831, 616 );
             this.ContextMenuStrip = this.contextMenuStrip;
             this.Controls.Add( this.toolStripContainer1 );
             this.MainMenuStrip = this.menuStrip;
@@ -632,6 +645,7 @@ namespace ReallySimpleRegEx
         public System.Windows.Forms.SplitContainer top_Spliter;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnMatchSelected;
     }
 }
 

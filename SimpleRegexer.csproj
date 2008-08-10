@@ -42,10 +42,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utility2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\dev\trees\tree\Utility2.root\Utility2\Utility2\bin\Debug\Utility2.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainFrm.cs">
@@ -53,6 +49,12 @@
     </Compile>
     <Compile Include="MainFrm.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatchCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MatchCtrl.Designer.cs">
+      <DependentUpon>MatchCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="OptionsDlg.cs">
       <SubType>Form</SubType>
@@ -65,6 +67,10 @@
     <EmbeddedResource Include="MainFrm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatchCtrl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MatchCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsDlg.resx">
       <DependentUpon>OptionsDlg.cs</DependentUpon>
@@ -95,6 +101,12 @@
   <ItemGroup>
     <Content Include="README.txt" />
     <Content Include="Todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\utility\Utility2\Utility2.csproj">
+      <Project>{4DFC8774-E67D-4EFF-9249-301C0D5EB158}</Project>
+      <Name>Utility2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

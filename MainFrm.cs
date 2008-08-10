@@ -315,6 +315,11 @@ namespace ReallySimpleRegEx
                 this.Invoke( new VoidDelegate( TryMatch ) );
             }
         }
+        public void TryMatchSelected()
+        {
+            this.exp = rtb_regx.SelectedText.Replace( "\n", "" );
+            TryMatch( exp );
+        }
         /// <summary>
         ///   make regex matches
         /// </summary>
@@ -407,6 +412,18 @@ namespace ReallySimpleRegEx
         {
             Close();
         }
+
+        private void mnMatchSelected_Click( object sender, EventArgs e )
+        {
+            timer.Enabled = false; // disable timer
+            TryMatchSelected();
+        }
+
+        private void listView_SelectedIndexChanged( object sender, EventArgs e )
+        {
+
+        }
+
         //private void SyntaxHighlight()
         //{
         //    string input = rtb_regx.Text;
