@@ -1,4 +1,4 @@
-namespace ReallySimpleRegEx
+namespace simple_regexer
 {
     partial class OptionsDlg
     {
@@ -73,7 +73,7 @@ namespace ReallySimpleRegEx
             // btnOK
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point( 352, 335 );
+            this.btnOK.Location = new System.Drawing.Point( 360, 335 );
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size( 75, 23 );
             this.btnOK.TabIndex = 0;
@@ -84,7 +84,7 @@ namespace ReallySimpleRegEx
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point( 271, 335 );
+            this.btnCancel.Location = new System.Drawing.Point( 281, 335 );
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size( 75, 23 );
             this.btnCancel.TabIndex = 1;
@@ -143,7 +143,7 @@ namespace ReallySimpleRegEx
             // 
             // lblFont1
             // 
-            this.lblFont1.Location = new System.Drawing.Point( 11, 19 );
+            this.lblFont1.Location = new System.Drawing.Point( 12, 24 );
             this.lblFont1.Name = "lblFont1";
             this.lblFont1.Size = new System.Drawing.Size( 64, 13 );
             this.lblFont1.TabIndex = 5;
@@ -225,11 +225,13 @@ namespace ReallySimpleRegEx
             // 
             this.lbl_exp_font.BackColor = System.Drawing.SystemColors.Window;
             this.lbl_exp_font.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_exp_font.Location = new System.Drawing.Point( 87, 16 );
+            this.lbl_exp_font.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_exp_font.Location = new System.Drawing.Point( 87, 21 );
             this.lbl_exp_font.Name = "lbl_exp_font";
-            this.lbl_exp_font.Size = new System.Drawing.Size( 134, 21 );
+            this.lbl_exp_font.Size = new System.Drawing.Size( 134, 19 );
             this.lbl_exp_font.TabIndex = 16;
             this.lbl_exp_font.Text = "Font";
+            this.lbl_exp_font.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_exp_font.Click += new System.EventHandler( this.lbl_exp_font_Click );
             // 
             // lbl_backcolor_name
@@ -271,16 +273,18 @@ namespace ReallySimpleRegEx
             // 
             this.lbl_input_font.BackColor = System.Drawing.SystemColors.Window;
             this.lbl_input_font.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_input_font.Location = new System.Drawing.Point( 87, 16 );
+            this.lbl_input_font.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_input_font.Location = new System.Drawing.Point( 87, 19 );
             this.lbl_input_font.Name = "lbl_input_font";
-            this.lbl_input_font.Size = new System.Drawing.Size( 134, 21 );
+            this.lbl_input_font.Size = new System.Drawing.Size( 134, 19 );
             this.lbl_input_font.TabIndex = 17;
             this.lbl_input_font.Text = "Font";
+            this.lbl_input_font.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl_input_font.Click += new System.EventHandler( this.lbl_input_font_Click );
             // 
             // lblFont2
             // 
-            this.lblFont2.Location = new System.Drawing.Point( 11, 23 );
+            this.lblFont2.Location = new System.Drawing.Point( 11, 22 );
             this.lblFont2.Name = "lblFont2";
             this.lblFont2.Size = new System.Drawing.Size( 64, 13 );
             this.lblFont2.TabIndex = 16;
@@ -360,7 +364,7 @@ namespace ReallySimpleRegEx
             this.gbghnt.Controls.Add( this.cb3 );
             this.gbghnt.Location = new System.Drawing.Point( 261, 2 );
             this.gbghnt.Name = "gbghnt";
-            this.gbghnt.Size = new System.Drawing.Size( 166, 327 );
+            this.gbghnt.Size = new System.Drawing.Size( 174, 327 );
             this.gbghnt.TabIndex = 17;
             this.gbghnt.TabStop = false;
             this.gbghnt.Text = "regx_opt";
@@ -503,7 +507,7 @@ namespace ReallySimpleRegEx
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size( 432, 371 );
+            this.ClientSize = new System.Drawing.Size( 440, 362 );
             this.Controls.Add( this.gbghnt );
             this.Controls.Add( this.grpgt );
             this.Controls.Add( this.groupBox2 );

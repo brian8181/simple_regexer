@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ReallySimpleRegEx
+namespace simple_regexer
 {
     public partial class MatchCtrl : UserControl
     {

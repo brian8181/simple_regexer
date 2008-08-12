@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReallySimpleRegEx.Properties
+namespace simple_regexer.Properties
 {
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
     {

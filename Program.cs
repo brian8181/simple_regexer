@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ReallySimpleRegEx
+namespace simple_regexer
 {
     static class Program
     {

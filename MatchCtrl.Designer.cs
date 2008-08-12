@@ -1,4 +1,4 @@
-namespace ReallySimpleRegEx
+namespace simple_regexer
 {
     partial class MatchCtrl
     {
@@ -153,7 +153,6 @@ namespace ReallySimpleRegEx
             this.GroupList.Location = new System.Drawing.Point( 3, 3 );
             this.GroupList.MultiSelect = false;
             this.GroupList.Name = "GroupList";
-            this.GroupList.ShowGroups = false;
             this.GroupList.Size = new System.Drawing.Size( 312, 200 );
             this.GroupList.TabIndex = 4;
             this.GroupList.UseCompatibleStateImageBehavior = false;

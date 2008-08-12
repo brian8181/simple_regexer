@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using simple_regexer;
 
-namespace ReallySimpleRegEx
+namespace simple_regexer
 {
     public partial class OptionsDlg : Form
     {
@@ -45,9 +46,19 @@ namespace ReallySimpleRegEx
             // load controls
             exp_font = Properties.Settings.Current.exp_font;
             input_font = Properties.Settings.Current.input_font;
-            lbl_exp_font.Text = Properties.Settings.Current.exp_font.Name;
-            lbl_input_font.Text = Properties.Settings.Current.input_font.Name;
-             // exp
+
+            string font = String.Format( "{0},{1}",
+                exp_font.Name,
+                exp_font.SizeInPoints.ToString( "0.0" ) );
+            lbl_exp_font.Text = font;
+
+           
+            font = String.Format( "{0},{1}",
+                  input_font.Name,
+                  input_font.SizeInPoints.ToString( "0.0" ) );
+            lbl_input_font.Text = font;
+
+            // exp
             lbl_forecolor_name.Text = Properties.Settings.Current.exp_forecolor.Name;
             lbl_backcolor_name.Text = Properties.Settings.Current.exp_backcolor.Name;
             lbl_hl_forecolor_name.Text = Properties.Settings.Current.exp_hl_forecolor.Name;
@@ -116,7 +127,12 @@ namespace ReallySimpleRegEx
             if(dlg.ShowDialog() == DialogResult.OK)
             {
                 exp_font = dlg.Font;
-                lbl_exp_font.Text = exp_font.Name;
+
+                string font = String.Format( "{0},{1}",
+                  exp_font.Name,
+                  exp_font.SizeInPoints.ToString( "0.0" ) );
+
+                lbl_exp_font.Text = font;
             }
         }
         /// <summary>
@@ -130,7 +146,12 @@ namespace ReallySimpleRegEx
             if(dlg.ShowDialog() == DialogResult.OK)
             {
                 input_font = dlg.Font;
-                lbl_input_font.Text = input_font.Name;
+
+                string font = String.Format("{0},{1}", 
+                    input_font.Name, 
+                    input_font.SizeInPoints.ToString("0.0"));
+
+                lbl_input_font.Text = font;
             }
         }
         private void lbl_forecolor_Click( object sender, EventArgs e )

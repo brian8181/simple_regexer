@@ -7,8 +7,8 @@
     <ProjectGuid>{34CE90E1-97FC-48F4-A364-F2B6D0172AF0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ReallySimpleRegEx</RootNamespace>
-    <AssemblyName>ReallySimpleRegEx</AssemblyName>
+    <RootNamespace>simple_regexer</RootNamespace>
+    <AssemblyName>simple_regexer</AssemblyName>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Document.cs" />
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +108,9 @@
       <Project>{4DFC8774-E67D-4EFF-9249-301C0D5EB158}</Project>
       <Name>Utility2</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

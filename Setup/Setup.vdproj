@@ -15,26 +15,26 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_09033875283C225B380F25EE8AB3742F"
+        "MsmKey" = "8:_7D745B2DAC653D1CCC05E520E1DDC932"
         "OwnerKey" = "8:_EC05152BFC6845D6B69DF4FE78C846BD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_09033875283C225B380F25EE8AB3742F"
-        "OwnerKey" = "8:_106B682FCC7B2873F2A90741307D85C6"
+        "MsmKey" = "8:_7D745B2DAC653D1CCC05E520E1DDC932"
+        "OwnerKey" = "8:_7E7F0FE2E3E82867B3B10C97D69EEC27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_106B682FCC7B2873F2A90741307D85C6"
+        "MsmKey" = "8:_7E7F0FE2E3E82867B3B10C97D69EEC27"
         "OwnerKey" = "8:_EC05152BFC6845D6B69DF4FE78C846BD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D7D8CE65FC597B8679913965DFE10D1F"
-        "OwnerKey" = "8:_106B682FCC7B2873F2A90741307D85C6"
+        "OwnerKey" = "8:_7E7F0FE2E3E82867B3B10C97D69EEC27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,25 +52,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_09033875283C225B380F25EE8AB3742F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EC05152BFC6845D6B69DF4FE78C846BD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_106B682FCC7B2873F2A90741307D85C6"
+        "OwnerKey" = "8:_7E7F0FE2E3E82867B3B10C97D69EEC27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D7D8CE65FC597B8679913965DFE10D1F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7D745B2DAC653D1CCC05E520E1DDC932"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -91,13 +91,24 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                }
+            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\Setup.msi"
+        "OutputFilename" = "8:Release\\simple_regexer.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -107,6 +118,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 2.0"
+                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -136,14 +163,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_09033875283C225B380F25EE8AB3742F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7D745B2DAC653D1CCC05E520E1DDC932"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Data.SQLite, Version=1.0.48.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_09033875283C225B380F25EE8AB3742F"
+                    "_7D745B2DAC653D1CCC05E520E1DDC932"
                     {
                     "Name" = "8:System.Data.SQLite.dll"
                     "Attributes" = "3:512"
@@ -167,14 +194,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_106B682FCC7B2873F2A90741307D85C6"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7E7F0FE2E3E82867B3B10C97D69EEC27"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Utility2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_106B682FCC7B2873F2A90741307D85C6"
+                    "_7E7F0FE2E3E82867B3B10C97D69EEC27"
                     {
                     "Name" = "8:Utility2.dll"
                     "Attributes" = "3:512"
@@ -283,21 +310,21 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
+        "ProductName" = "8:SimpleRegexer"
         "ProductCode" = "8:{4FDBA472-55A7-4894-8E96-2BCF6C4142BA}"
-        "PackageCode" = "8:{F652DD70-FB6D-49E7-AFF6-121EA99CE999}"
+        "PackageCode" = "8:{B78747ED-2A56-43DF-9817-C5569ECB1B49}"
         "UpgradeCode" = "8:{229C88D5-296F-411A-BF27-B973C236863E}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:bkp-online.com"
+        "Manufacturer" = "8:bkp-online"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:bkp-online.com"
+        "ARPCONTACT" = "8:Brian Preston"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -404,6 +431,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7CA7F0F2F4AA4B5D97E4C9AE1595770D"
+            {
+            "Name" = "8:SimpleRegexer"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_EC05152BFC6845D6B69DF4FE78C846BD"
+            "Folder" = "8:_8957697E9F7C476CB5EECFBA2772C25D"
+            "WorkingFolder" = "8:_674F0D7A865D4DF9BAD6317347E1B6F9"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -917,7 +958,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EC05152BFC6845D6B69DF4FE78C846BD"
             {
-            "SourcePath" = "8:..\\simple_regexer\\obj\\Release\\ReallySimpleRegEx.exe"
+            "SourcePath" = "8:..\\obj\\Release\\ReallySimpleRegEx.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_674F0D7A865D4DF9BAD6317347E1B6F9"

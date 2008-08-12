@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using BKP.Online;
 
-namespace ReallySimpleRegEx
+namespace simple_regexer
 {
     /// <summary>
     /// 
@@ -19,6 +19,7 @@ namespace ReallySimpleRegEx
         #region Contruction & Settings
         private volatile string exp = string.Empty;
         private volatile string input = string.Empty;
+        private Regex regx = null;
         private MatchCollection mc = null;
         private FileInfo file_info = null;
         private bool file_dirty = false;
@@ -343,7 +344,8 @@ namespace ReallySimpleRegEx
             {
                 try
                 {
-                    mc = Regex.Matches( input, exp, regx_options );
+                    regx = new Regex( exp, regx_options );
+                    mc = regx.Matches( input );
                     ss_status.Text = Properties.Resources.MATCHED;
                     FormatMatchText( input_hl_backcolor );
                     UpdateFileStatus();
@@ -357,31 +359,48 @@ namespace ReallySimpleRegEx
                 ss_status.Text = Properties.Resources.READY_WAITING;
             }
         }
+
         /// <summary>
         /// highlight matches                                                                                   
         /// </summary>
         /// <param name="c"></param>
         private void FormatMatchText( Color c )
         {
-            listView.Items.Clear();
+            // clear all
+            matchCtrl.GroupList.Items.Clear();
+            matchCtrl.MatchList.Items.Clear();
+            matchCtrl.GroupList.Groups.Clear();
+
+            // get regex group names
+            string[] groups = null;
+            if(regx != null)
+            {
+                groups = regx.GetGroupNames();
+                foreach(string g in groups)
+                {
+                    matchCtrl.GroupList.Groups.Add( g, g );
+                }
+            }
+            
             foreach(Match m in mc)
             {
                 rtb_input.SelectionStart = m.Index;
                 rtb_input.SelectionLength = m.Length;
                 rtb_input.SelectionBackColor = c;
 
-                ListViewItem item = listView.Items.Add( m.Value );
+                ListViewItem item = matchCtrl.MatchList.Items.Add( m.Value );
                 item.SubItems.Add( m.Index.ToString() );
                 item.SubItems.Add( m.Length.ToString() );
 
-                //if(m.Groups.Count > 0)
-                //{
-                //    foreach(Group g in m.Groups)
-                //    {
-                //        item.SubItems.Add( g.Index + g.Index + " : \"" + g.Value );
 
-                //    }
-                //};
+                foreach(string g in groups)
+                {
+                     Group exp_grp = m.Groups[g];
+                     item = matchCtrl.GroupList.Items.Add( exp_grp.Value );
+                     matchCtrl.GroupList.Groups[g].Items.Add( item );
+                     item.SubItems.Add( exp_grp.Index.ToString() );
+                     item.SubItems.Add( exp_grp.Length.ToString() );
+                }
             }
             rtb_input.SelectionStart = 0;
             rtb_input.SelectionLength = 0;
@@ -419,11 +438,21 @@ namespace ReallySimpleRegEx
             TryMatchSelected();
         }
 
-        private void listView_SelectedIndexChanged( object sender, EventArgs e )
+        private void MainFrm_FormClosing( object sender, FormClosingEventArgs e )
         {
-
+            if(rtb_regx.Modified)
+            {
+                DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
+                             Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
+                // save the working file
+                if(res == DialogResult.OK)
+                {
+                    Save();
+                }
+            }
         }
 
+      
         //private void SyntaxHighlight()
         //{
         //    string input = rtb_regx.Text;
