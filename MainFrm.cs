@@ -22,7 +22,7 @@ namespace simple_regexer
         private Regex regx = null;
         private MatchCollection mc = null;
         private FileInfo file_info = null;
-        private bool file_dirty = false;
+        private Document doc = null;
         /// <summary>
         /// 
         /// </summary>
@@ -37,7 +37,10 @@ namespace simple_regexer
             Properties.Settings.Current = Properties.Settings.Default;
             LoadSettings();
             rtb_input.SelectionProtected = false;
+            doc = new Document( rtb_regx, rtb_input );
+            doc.StatusChanged += new EventHandler( doc_StatusChanged );
         }
+         
 
         private Color input_hl_forecolor;
         private Color input_hl_backcolor;
@@ -60,7 +63,6 @@ namespace simple_regexer
             input_hl_forecolor = Properties.Settings.Current.input_hl_forecolor;
             auto_match = Properties.Settings.Current.auto_match;
             interval = Properties.Settings.Current.interval;
-            UpdateFileStatus();
         }
         /// <summary>
         ///  commit current to file
@@ -140,8 +142,20 @@ namespace simple_regexer
         /// </summary>
         public void FileOpenDialog()
         {
+            if(doc.isDirty)
+            {
+                DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
+                        Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
+                // save the working file
+                if(res == DialogResult.OK)
+                {
+                    Save();
+                }
+            }
+
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = Properties.Resources.FILE_FILTER;
+            dlg.FilterIndex = 2;
             dlg.DefaultExt = Properties.Resources.DEFAULT_EXT;
             dlg.DereferenceLinks = false;
             dlg.RestoreDirectory = true;
@@ -151,25 +165,15 @@ namespace simple_regexer
             dlg.SupportMultiDottedExtensions = true;
             dlg.InitialDirectory = Environment.GetFolderPath
                 ( Environment.SpecialFolder.MyDocuments );
-
-            DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
-                    Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
-            // save the working file
-            if(res == DialogResult.OK)
-            {
-                Save();
-            }
-
+                  
             if(dlg.ShowDialog() == DialogResult.OK)
             {
                 string file = dlg.FileName;
-                if(File.Exists( file ))
-                    rtb_regx.Text = File.ReadAllText( file );
-                // file status
                 file_info = new FileInfo( file );
-                file_dirty = false;
+                doc.Open( file_info );
+                doc.Read();
+
             }
-            UpdateFileStatus();
         }
         /// <summary>
         /// save file
@@ -180,7 +184,7 @@ namespace simple_regexer
         {
             // just save if exsit
             if(file_info != null && file_info.Exists)
-                File.WriteAllText( file_info.FullName, rtb_regx.Text );
+                doc.Write();
             else
                 FileSaveDialog( true,
                                 Properties.Resources.DEFAULT_EXT,
@@ -208,6 +212,7 @@ namespace simple_regexer
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Title = title;
             dlg.Filter = filter;
+            dlg.FilterIndex = 2;
             dlg.DefaultExt = ext;
             dlg.CreatePrompt = creating;
             dlg.DereferenceLinks = false;
@@ -223,24 +228,17 @@ namespace simple_regexer
             {
                 string file = dlg.FileName;
                 file_info = new FileInfo( file );
-                File.WriteAllText( file, rtb_regx.Text );
-                // file status
-                file_dirty = false;
+                doc.Open( file_info );
+                doc.Write();
             }
-            UpdateFileStatus();
         }
-        /// <summary>
-        /// update file status
-        /// </summary>
-        public void UpdateFileStatus()
+
+        void doc_StatusChanged( object sender, EventArgs e )
         {
-            if(file_info != null)
-                lblFileSaveStatus.Text = file_info.Name + " : " + ( ( file_dirty ) ? "updated" : "saved" );
-            else
-                lblFileSaveStatus.Text = "unsaved";
+            lblFileSaveStatus.Text = doc.Name + " : " + (doc.isDirty ? "updated" : "saved");
         }
         #endregion
-              
+
         #region RichTextBox Events
         /// <summary>
         ///  regx box entered
@@ -300,7 +298,6 @@ namespace simple_regexer
                 ss_status.Text = Properties.Resources.EDITING_EXP;
                 timer.Enabled = true;
             }
-            file_dirty = true;
         }
         #endregion
 
@@ -348,7 +345,6 @@ namespace simple_regexer
                     mc = regx.Matches( input );
                     ss_status.Text = Properties.Resources.MATCHED;
                     FormatMatchText( input_hl_backcolor );
-                    UpdateFileStatus();
                 } catch(ArgumentException)
                 {
                     ss_status.Text = Properties.Resources.INVALID_EXPRESSION;
@@ -440,7 +436,7 @@ namespace simple_regexer
 
         private void MainFrm_FormClosing( object sender, FormClosingEventArgs e )
         {
-            if(rtb_regx.Modified)
+            if(doc.isDirty)
             {
                 DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
                              Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );

@@ -61,7 +61,7 @@ namespace simple_regexer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to txt.
+        ///   Looks up a localized string similar to rgx.
         /// </summary>
         internal static string DEFAULT_EXT {
             get {
