@@ -441,7 +441,7 @@ namespace simple_regexer
                 DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
                              Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
                 // save the working file
-                if(res == DialogResult.OK)
+                if(res == DialogResult.Yes)
                 {
                     Save();
                 }
