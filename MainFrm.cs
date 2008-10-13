@@ -247,11 +247,8 @@ namespace simple_regexer
         /// <param name="e"></param>
         private void rtb_regx_Enter( object sender, EventArgs e )
         {
-            //RichTextBox rtb = (RichTextBox)sender;
-            //rtb_regx_focus = rtb;
-            TryMatch();
-            // used for clipboard
-            //rtb_captured = rtb;
+             if(auto_match)
+                TryMatch();
         }
         /// <summary>
         ///  regx box leave
@@ -261,7 +258,6 @@ namespace simple_regexer
         private void rtb_regx_Leave( object sender, EventArgs e )
         {
             // used for clipboard
-            //rtb_captured = null;
         }
         /// <summary>
         /// begin edit input text
@@ -313,6 +309,9 @@ namespace simple_regexer
                 this.Invoke( new VoidDelegate( TryMatch ) );
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void TryMatchSelected()
         {
             this.exp = rtb_regx.SelectedText.Replace( "\n", "" );
@@ -408,9 +407,14 @@ namespace simple_regexer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mnToolsAutoMatch_Click( object sender, EventArgs e )
+        private void mnAutoMatch_Click( object sender, EventArgs e )
         {
-            auto_match = mnToolsAutoMatch.Checked;
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+           
+            auto_match = item.Checked;
+            mnAutoMatch.Checked = auto_match;
+            mnToolsAutoMatch.Checked = auto_match;
+
         }
         /// <summary>
         /// show \ hide match list
@@ -419,21 +423,32 @@ namespace simple_regexer
         /// <param name="e"></param>
         private void mnMatchList_Click( object sender, EventArgs e )
         {
-            top_Spliter.Panel2Collapsed = !mnMatchList.Checked;
-  
+            top_Spliter.Panel2Collapsed = !mnShowMatchList.Checked;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnFileExit_Click( object sender, EventArgs e )
         {
             Close();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnMatchSelected_Click( object sender, EventArgs e )
         {
             timer.Enabled = false; // disable timer
             TryMatchSelected();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainFrm_FormClosing( object sender, FormClosingEventArgs e )
         {
             if(doc.isDirty)
@@ -447,8 +462,16 @@ namespace simple_regexer
                 }
             }
         }
-
-      
+        /// <summary>
+        /// make a manual (not in auto_match mode) match 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnMatch_Click( object sender, EventArgs e )
+        {
+            TryMatch();
+        }
+           
         //private void SyntaxHighlight()
         //{
         //    string input = rtb_regx.Text;
