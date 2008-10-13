@@ -471,36 +471,5 @@ namespace simple_regexer
         {
             TryMatch();
         }
-           
-        //private void SyntaxHighlight()
-        //{
-        //    string input = rtb_regx.Text;
-
-        //    MatchCollection mc = Regex.Matches( input, syntax, RegexOptions.Multiline );
-
-        //    int idx = rtb_regx.SelectionStart;
-        //    foreach( Match m in mc )
-        //    {
-        //        Group g = m.Groups["g1"];
-        //        rtb_regx.SelectionStart = g.Index;
-        //        rtb_regx.SelectionLength = g.Length;
-        //        rtb_regx.SelectionBackColor = Color.Yellow;
-
-        //        g = m.Groups["g2"];
-        //        rtb_regx.SelectionStart = g.Index;
-        //        rtb_regx.SelectionLength = g.Length;
-        //        rtb_regx.SelectionBackColor = Color.Green;
-
-        //        g = m.Groups["g3"];
-        //        rtb_regx.SelectionStart = g.Index;
-        //        rtb_regx.SelectionLength = g.Length;
-        //        rtb_regx.SelectionBackColor = Color.Blue;
-
-        //    }
-
-        //    rtb_regx.SelectionStart = idx;
-        //    rtb_regx.SelectionLength = 0;
-        //    rtb_regx.SelectionColor = Properties.Settings.Current.exp_backcolor;
-        //}
     }
 }
