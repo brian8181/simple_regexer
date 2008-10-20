@@ -39,7 +39,16 @@ namespace simple_regexer
             rtb_input.SelectionProtected = false;
             doc = new Document( rtb_regx, rtb_input );
             doc.StatusChanged += new EventHandler( doc_StatusChanged );
-        }
+            
+            CustomMenu context = new CustomMenu();
+            CustomMenu main = new CustomMenu();
+
+            rtb_regx.ContextMenuStrip = context;
+            rtb_input.ContextMenuStrip = context;
+
+            viewToolStripMenuItem.DropDownItems.Add( main.AutoMatch );
+            viewToolStripMenuItem.DropDownItems.Add( main.ShowMatchList );
+       }
          
 
         private Color input_hl_forecolor;
@@ -279,7 +288,7 @@ namespace simple_regexer
         private void rtb_input_Leave( object sender, EventArgs e )
         {
             this.ss_status.Text = Properties.Resources.READY_WAITING;
-            auto_match = mnToolsAutoMatch.Checked;
+            //auto_match = mnToolsAutoMatch.Checked;
         }
         /// </summary>
         /// regx text changed - toggles the edit events 
@@ -413,7 +422,7 @@ namespace simple_regexer
            
             auto_match = item.Checked;
             mnAutoMatch.Checked = auto_match;
-            mnToolsAutoMatch.Checked = auto_match;
+            //mnToolsAutoMatch.Checked = auto_match;
 
         }
         /// <summary>
@@ -470,6 +479,11 @@ namespace simple_regexer
         private void mnMatch_Click( object sender, EventArgs e )
         {
             TryMatch();
+        }
+
+        private void aboutToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+
         }
     }
 }
