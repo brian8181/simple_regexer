@@ -2,24 +2,15 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleRegexer", "SimpleRegexer.csproj", "{34CE90E1-97FC-48F4-A364-F2B6D0172AF0}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility2", "..\utility\Utility2\Utility2.csproj", "{4DFC8774-E67D-4EFF-9249-301C0D5EB158}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{01E76ACB-E9B7-4154-B1C2-01713C535B49}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "..\utility\Utility2\Utility.csproj", "{4DFC8774-E67D-4EFF-9249-301C0D5EB158}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Global
+	GlobalSection(TextTemplating) = postSolution
+		TextTemplating = 1
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Deploy_Debug|Any CPU = Deploy_Debug|Any CPU
@@ -32,22 +23,19 @@ Global
 		{34CE90E1-97FC-48F4-A364-F2B6D0172AF0}.Deploy_Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34CE90E1-97FC-48F4-A364-F2B6D0172AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34CE90E1-97FC-48F4-A364-F2B6D0172AF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Debug|Any CPU.ActiveCfg = Debug
-		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Deploy_Debug|Any CPU.ActiveCfg = Debug
-		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Deploy_Debug|Any CPU.Build.0 = Debug
-		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Release|Any CPU.ActiveCfg = Release
-		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Release|Any CPU.Build.0 = Release
 		{4DFC8774-E67D-4EFF-9249-301C0D5EB158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4DFC8774-E67D-4EFF-9249-301C0D5EB158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFC8774-E67D-4EFF-9249-301C0D5EB158}.Deploy_Debug|Any CPU.ActiveCfg = Deploy_Debug|Any CPU
 		{4DFC8774-E67D-4EFF-9249-301C0D5EB158}.Deploy_Debug|Any CPU.Build.0 = Deploy_Debug|Any CPU
 		{4DFC8774-E67D-4EFF-9249-301C0D5EB158}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFC8774-E67D-4EFF-9249-301C0D5EB158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Debug|Any CPU.ActiveCfg = Debug
+		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Deploy_Debug|Any CPU.ActiveCfg = Debug
+		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Deploy_Debug|Any CPU.Build.0 = Debug
+		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Release|Any CPU.ActiveCfg = Release
+		{01E76ACB-E9B7-4154-B1C2-01713C535B49}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TextTemplating) = postSolution
-		TextTemplating = 1
 	EndGlobalSection
 EndGlobal

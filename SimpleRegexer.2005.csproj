@@ -118,13 +118,13 @@
     <Content Include="Todo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+    <ProjectReference Include="..\utility\Utility2\Utility2.csproj">
+      <Project>{4DFC8774-E67D-4EFF-9249-301C0D5EB158}</Project>
+      <Name>Utility2</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\utility\Utility2\Utility.csproj">
-      <Project>{4DFC8774-E67D-4EFF-9249-301C0D5EB158}</Project>
-      <Name>Utility</Name>
-    </ProjectReference>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
