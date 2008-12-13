@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
-using BKP.Online;
+using Utility;
 
 namespace simple_regexer
 {
@@ -49,8 +49,7 @@ namespace simple_regexer
             viewToolStripMenuItem.DropDownItems.Add( main.AutoMatch );
             viewToolStripMenuItem.DropDownItems.Add( main.ShowMatchList );
        }
-         
-
+       
         private Color input_hl_forecolor;
         private Color input_hl_backcolor;
         private Color input_backcolor;

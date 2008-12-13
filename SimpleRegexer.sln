@@ -13,7 +13,7 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "..\utility\Utility2\Utility.csproj", "{4DFC8774-E67D-4EFF-9249-301C0D5EB158}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utility", "..\utility\utility\utility.csproj", "{4DFC8774-E67D-4EFF-9249-301C0D5EB158}"
 	ProjectSection(WebsiteProperties) = preProject
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.Debug = "False"

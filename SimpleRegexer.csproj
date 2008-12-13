@@ -121,9 +121,9 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\utility\Utility2\Utility.csproj">
+    <ProjectReference Include="..\utility\utility\utility.csproj">
       <Project>{4DFC8774-E67D-4EFF-9249-301C0D5EB158}</Project>
-      <Name>Utility</Name>
+      <Name>utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
