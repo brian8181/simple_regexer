@@ -34,10 +34,10 @@ namespace simple_regexer
             this.top_Spliter = new System.Windows.Forms.SplitContainer();
             this.rtb_regx = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip( this.components );
-            this.mnAutoMatch = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnShowMatchList = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnMatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnMatchList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnMatchSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.matchCtrl = new simple_regexer.MatchCtrl();
             this.rtb_input = new System.Windows.Forms.RichTextBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +57,9 @@ namespace simple_regexer
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnToolsAutoMatch = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnToolEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnToolSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +76,6 @@ namespace simple_regexer
             this.ss_status = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblFileSaveStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.matchCtrl = new simple_regexer.MatchCtrl();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -127,6 +128,7 @@ namespace simple_regexer
             // 
             // rtb_regx
             // 
+            this.rtb_regx.ContextMenuStrip = this.contextMenuStrip;
             this.rtb_regx.DetectUrls = false;
             this.rtb_regx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_regx.Location = new System.Drawing.Point( 0, 0 );
@@ -141,40 +143,30 @@ namespace simple_regexer
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[] {
-            this.mnAutoMatch,
-            this.mnShowMatchList,
-            this.mnMatch,
+            this.mnMatchList,
+            this.toolStripMenuItem1,
             this.mnMatchSelected} );
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size( 205, 92 );
+            this.contextMenuStrip.Size = new System.Drawing.Size( 205, 70 );
             // 
-            // mnAutoMatch
+            // mnMatchList
             // 
-            this.mnAutoMatch.Checked = true;
-            this.mnAutoMatch.CheckOnClick = true;
-            this.mnAutoMatch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnAutoMatch.Name = "mnAutoMatch";
-            this.mnAutoMatch.Size = new System.Drawing.Size( 204, 22 );
-            this.mnAutoMatch.Text = "Auto Match";
-            this.mnAutoMatch.Click += new System.EventHandler( this.mnAutoMatch_Click );
+            this.mnMatchList.Checked = true;
+            this.mnMatchList.CheckOnClick = true;
+            this.mnMatchList.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnMatchList.Name = "mnMatchList";
+            this.mnMatchList.Size = new System.Drawing.Size( 204, 22 );
+            this.mnMatchList.Text = "Match List";
+            this.mnMatchList.Click += new System.EventHandler( this.mnMatchList_Click );
             // 
-            // mnShowMatchList
+            // toolStripMenuItem1
             // 
-            this.mnShowMatchList.Checked = true;
-            this.mnShowMatchList.CheckOnClick = true;
-            this.mnShowMatchList.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnShowMatchList.Name = "mnShowMatchList";
-            this.mnShowMatchList.Size = new System.Drawing.Size( 204, 22 );
-            this.mnShowMatchList.Text = "Show Match List";
-            this.mnShowMatchList.Click += new System.EventHandler( this.mnMatchList_Click );
-            // 
-            // mnMatch
-            // 
-            this.mnMatch.Name = "mnMatch";
-            this.mnMatch.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.mnMatch.Size = new System.Drawing.Size( 204, 22 );
-            this.mnMatch.Text = "Match";
-            this.mnMatch.Click += new System.EventHandler( this.mnMatch_Click );
+            this.toolStripMenuItem1.Checked = true;
+            this.toolStripMenuItem1.CheckOnClick = true;
+            this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size( 204, 22 );
+            this.toolStripMenuItem1.Text = "Auto Match";
             // 
             // mnMatchSelected
             // 
@@ -184,8 +176,17 @@ namespace simple_regexer
             this.mnMatchSelected.Text = "Match Selection";
             this.mnMatchSelected.Click += new System.EventHandler( this.mnMatchSelected_Click );
             // 
+            // matchCtrl
+            // 
+            this.matchCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchCtrl.Location = new System.Drawing.Point( 0, 0 );
+            this.matchCtrl.Name = "matchCtrl";
+            this.matchCtrl.Size = new System.Drawing.Size( 365, 205 );
+            this.matchCtrl.TabIndex = 0;
+            // 
             // rtb_input
             // 
+            this.rtb_input.ContextMenuStrip = this.contextMenuStrip;
             this.rtb_input.DetectUrls = false;
             this.rtb_input.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_input.Location = new System.Drawing.Point( 0, 0 );
@@ -201,7 +202,6 @@ namespace simple_regexer
             this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip.Items.AddRange( new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem} );
@@ -229,40 +229,40 @@ namespace simple_regexer
             this.mnFileOpen.Image = ( (System.Drawing.Image)( resources.GetObject( "mnFileOpen.Image" ) ) );
             this.mnFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnFileOpen.Name = "mnFileOpen";
-            this.mnFileOpen.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileOpen.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileOpen.Text = "&Open";
             this.mnFileOpen.Click += new System.EventHandler( this.mnFileOpen_Click );
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator.Size = new System.Drawing.Size( 121, 6 );
             // 
             // mnFileSave
             // 
             this.mnFileSave.Image = ( (System.Drawing.Image)( resources.GetObject( "mnFileSave.Image" ) ) );
             this.mnFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnFileSave.Name = "mnFileSave";
-            this.mnFileSave.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileSave.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileSave.Text = "&Save";
             this.mnFileSave.Click += new System.EventHandler( this.mnFileSave_Click );
             // 
             // mnFileSaveAs
             // 
             this.mnFileSaveAs.Name = "mnFileSaveAs";
-            this.mnFileSaveAs.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileSaveAs.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileSaveAs.Text = "Save &As";
             this.mnFileSaveAs.Click += new System.EventHandler( this.mnFileSaveAs_Click );
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator1.Size = new System.Drawing.Size( 121, 6 );
             // 
             // mnFileExit
             // 
             this.mnFileExit.Name = "mnFileExit";
-            this.mnFileExit.Size = new System.Drawing.Size( 152, 22 );
+            this.mnFileExit.Size = new System.Drawing.Size( 124, 22 );
             this.mnFileExit.Text = "E&xit";
             this.mnFileExit.Click += new System.EventHandler( this.mnFileExit_Click );
             // 
@@ -284,26 +284,26 @@ namespace simple_regexer
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.undoToolStripMenuItem.Text = "&Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.redoToolStripMenuItem.Text = "&Redo";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator3.Size = new System.Drawing.Size( 125, 6 );
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Image = ( (System.Drawing.Image)( resources.GetObject( "cutToolStripMenuItem.Image" ) ) );
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.cutToolStripMenuItem.Text = "Cu&t";
             // 
             // copyToolStripMenuItem
@@ -311,7 +311,7 @@ namespace simple_regexer
             this.copyToolStripMenuItem.Image = ( (System.Drawing.Image)( resources.GetObject( "copyToolStripMenuItem.Image" ) ) );
             this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.copyToolStripMenuItem.Text = "&Copy";
             // 
             // pasteToolStripMenuItem
@@ -319,27 +319,56 @@ namespace simple_regexer
             this.pasteToolStripMenuItem.Image = ( (System.Drawing.Image)( resources.GetObject( "pasteToolStripMenuItem.Image" ) ) );
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.pasteToolStripMenuItem.Text = "&Paste";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size( 149, 6 );
+            this.toolStripSeparator4.Size = new System.Drawing.Size( 125, 6 );
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size( 152, 22 );
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size( 128, 22 );
             this.selectAllToolStripMenuItem.Text = "Select &All";
             // 
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange( new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem,
             this.toolStripMenuItem2} );
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size( 44, 20 );
             this.toolsToolStripMenuItem.Text = "&Tools";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange( new System.Windows.Forms.ToolStripItem[] {
+            this.mnToolsAutoMatch,
+            this.toolStripMenuItem3} );
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size( 124, 22 );
+            this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // mnToolsAutoMatch
+            // 
+            this.mnToolsAutoMatch.Checked = true;
+            this.mnToolsAutoMatch.CheckOnClick = true;
+            this.mnToolsAutoMatch.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnToolsAutoMatch.Name = "mnToolsAutoMatch";
+            this.mnToolsAutoMatch.Size = new System.Drawing.Size( 140, 22 );
+            this.mnToolsAutoMatch.Text = "Auto Match";
+            this.mnToolsAutoMatch.Click += new System.EventHandler( this.mnToolsAutoMatch_Click );
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Checked = true;
+            this.toolStripMenuItem3.CheckOnClick = true;
+            this.toolStripMenuItem3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size( 140, 22 );
+            this.toolStripMenuItem3.Text = "Match List";
             // 
             // toolStripMenuItem2
             // 
@@ -349,7 +378,7 @@ namespace simple_regexer
             this.mnToolReload,
             this.mnToolReset} );
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size( 152, 22 );
+            this.toolStripMenuItem2.Size = new System.Drawing.Size( 124, 22 );
             this.toolStripMenuItem2.Text = "Settings";
             // 
             // mnToolEdit
@@ -406,7 +435,6 @@ namespace simple_regexer
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size( 129, 22 );
             this.aboutToolStripMenuItem.Text = "&About...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler( this.aboutToolStripMenuItem_Click );
             // 
             // timer
             // 
@@ -491,20 +519,6 @@ namespace simple_regexer
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add( this.menuStrip );
             // 
-            // matchCtrl
-            // 
-            this.matchCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchCtrl.Location = new System.Drawing.Point( 0, 0 );
-            this.matchCtrl.Name = "matchCtrl";
-            this.matchCtrl.Size = new System.Drawing.Size( 365, 205 );
-            this.matchCtrl.TabIndex = 0;
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size( 41, 20 );
-            this.viewToolStripMenuItem.Text = "&View";
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 13F );
@@ -568,6 +582,8 @@ namespace simple_regexer
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnToolsAutoMatch;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
@@ -578,13 +594,12 @@ namespace simple_regexer
         private System.Windows.Forms.ToolStripMenuItem mnToolReload;
         private System.Windows.Forms.ToolStripMenuItem mnToolReset;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem mnShowMatchList;
+        private System.Windows.Forms.ToolStripMenuItem mnMatchList;
         public System.Windows.Forms.SplitContainer top_Spliter;
-        private System.Windows.Forms.ToolStripMenuItem mnAutoMatch;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnMatchSelected;
         private MatchCtrl matchCtrl;
-        private System.Windows.Forms.ToolStripMenuItem mnMatch;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
     }
 }
 
