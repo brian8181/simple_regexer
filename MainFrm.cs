@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
-using Utility;
+using BKP.Online;
 
 namespace simple_regexer
 {
@@ -39,17 +39,9 @@ namespace simple_regexer
             rtb_input.SelectionProtected = false;
             doc = new Document( rtb_regx, rtb_input );
             doc.StatusChanged += new EventHandler( doc_StatusChanged );
-            
-            CustomMenu context = new CustomMenu();
-            CustomMenu main = new CustomMenu();
+        }
+         
 
-            rtb_regx.ContextMenuStrip = context;
-            rtb_input.ContextMenuStrip = context;
-
-            viewToolStripMenuItem.DropDownItems.Add( main.AutoMatch );
-            viewToolStripMenuItem.DropDownItems.Add( main.ShowMatchList );
-       }
-       
         private Color input_hl_forecolor;
         private Color input_hl_backcolor;
         private Color input_backcolor;
@@ -255,8 +247,11 @@ namespace simple_regexer
         /// <param name="e"></param>
         private void rtb_regx_Enter( object sender, EventArgs e )
         {
-             if(auto_match)
-                TryMatch();
+            //RichTextBox rtb = (RichTextBox)sender;
+            //rtb_regx_focus = rtb;
+            TryMatch();
+            // used for clipboard
+            //rtb_captured = rtb;
         }
         /// <summary>
         ///  regx box leave
@@ -266,6 +261,7 @@ namespace simple_regexer
         private void rtb_regx_Leave( object sender, EventArgs e )
         {
             // used for clipboard
+            //rtb_captured = null;
         }
         /// <summary>
         /// begin edit input text
@@ -287,7 +283,7 @@ namespace simple_regexer
         private void rtb_input_Leave( object sender, EventArgs e )
         {
             this.ss_status.Text = Properties.Resources.READY_WAITING;
-            //auto_match = mnToolsAutoMatch.Checked;
+            auto_match = mnToolsAutoMatch.Checked;
         }
         /// </summary>
         /// regx text changed - toggles the edit events 
@@ -317,9 +313,6 @@ namespace simple_regexer
                 this.Invoke( new VoidDelegate( TryMatch ) );
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
         public void TryMatchSelected()
         {
             this.exp = rtb_regx.SelectedText.Replace( "\n", "" );
@@ -415,14 +408,9 @@ namespace simple_regexer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mnAutoMatch_Click( object sender, EventArgs e )
+        private void mnToolsAutoMatch_Click( object sender, EventArgs e )
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-           
-            auto_match = item.Checked;
-            mnAutoMatch.Checked = auto_match;
-            //mnToolsAutoMatch.Checked = auto_match;
-
+            auto_match = mnToolsAutoMatch.Checked;
         }
         /// <summary>
         /// show \ hide match list
@@ -431,32 +419,21 @@ namespace simple_regexer
         /// <param name="e"></param>
         private void mnMatchList_Click( object sender, EventArgs e )
         {
-            top_Spliter.Panel2Collapsed = !mnShowMatchList.Checked;
+            top_Spliter.Panel2Collapsed = !mnMatchList.Checked;
+  
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void mnFileExit_Click( object sender, EventArgs e )
         {
             Close();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void mnMatchSelected_Click( object sender, EventArgs e )
         {
             timer.Enabled = false; // disable timer
             TryMatchSelected();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void MainFrm_FormClosing( object sender, FormClosingEventArgs e )
         {
             if(doc.isDirty)
@@ -464,25 +441,43 @@ namespace simple_regexer
                 DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
                              Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
                 // save the working file
-                if(res == DialogResult.Yes)
+                if(res == DialogResult.OK)
                 {
                     Save();
                 }
             }
         }
-        /// <summary>
-        /// make a manual (not in auto_match mode) match 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mnMatch_Click( object sender, EventArgs e )
-        {
-            TryMatch();
-        }
 
-        private void aboutToolStripMenuItem_Click( object sender, EventArgs e )
-        {
+      
+        //private void SyntaxHighlight()
+        //{
+        //    string input = rtb_regx.Text;
 
-        }
+        //    MatchCollection mc = Regex.Matches( input, syntax, RegexOptions.Multiline );
+
+        //    int idx = rtb_regx.SelectionStart;
+        //    foreach( Match m in mc )
+        //    {
+        //        Group g = m.Groups["g1"];
+        //        rtb_regx.SelectionStart = g.Index;
+        //        rtb_regx.SelectionLength = g.Length;
+        //        rtb_regx.SelectionBackColor = Color.Yellow;
+
+        //        g = m.Groups["g2"];
+        //        rtb_regx.SelectionStart = g.Index;
+        //        rtb_regx.SelectionLength = g.Length;
+        //        rtb_regx.SelectionBackColor = Color.Green;
+
+        //        g = m.Groups["g3"];
+        //        rtb_regx.SelectionStart = g.Index;
+        //        rtb_regx.SelectionLength = g.Length;
+        //        rtb_regx.SelectionBackColor = Color.Blue;
+
+        //    }
+
+        //    rtb_regx.SelectionStart = idx;
+        //    rtb_regx.SelectionLength = 0;
+        //    rtb_regx.SelectionColor = Properties.Settings.Current.exp_backcolor;
+        //}
     }
 }
