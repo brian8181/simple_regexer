@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
-using BKP.Online;
+using Utility;
 
 namespace simple_regexer
 {
@@ -419,7 +419,7 @@ namespace simple_regexer
         /// <param name="e"></param>
         private void mnMatchList_Click( object sender, EventArgs e )
         {
-            top_Spliter.Panel2Collapsed = !mnMatchList.Checked;
+            //top_Spliter.Panel2Collapsed = !cmnMatchList.Checked;
   
         }
 
@@ -445,6 +445,21 @@ namespace simple_regexer
                 {
                     Save();
                 }
+            }
+        }
+
+      
+        private void cmnAutoMatch_Click(object sender, EventArgs e)
+        {
+            if (auto_match)
+            {
+                FormatMatchText(input_backcolor);
+                auto_match = false;
+            }
+            else
+            {
+                TryMatch();
+                auto_match = true;
             }
         }
 
