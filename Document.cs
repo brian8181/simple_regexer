@@ -106,6 +106,7 @@ namespace simple_regexer
 
             exp.ModifiedChanged += new EventHandler( exp_ModifiedChanged );
             input.ModifiedChanged += new EventHandler( input_ModifiedChanged );
+            OnStatusChanged();
         }
         /// <summary>
         /// 

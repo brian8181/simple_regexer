@@ -29,13 +29,19 @@ namespace simple_regexer
         public MainFrm()
         {
             InitializeComponent();
+            
+            Properties.Settings.Current = Properties.Settings.Default;
+            LoadSettings();
+            InitDocument();
+           
+        }
+
+        public void InitDocument()
+        {
             timer.Enabled = false;
             ss_status.Text = Properties.Resources.READY_WAITING_ALT1;
             // empty match
-            mc = Regex.Matches( "x", "y" );
-
-            Properties.Settings.Current = Properties.Settings.Default;
-            LoadSettings();
+            mc = Regex.Matches("x", "y");
             rtb_input.SelectionProtected = false;
             doc = new Document( rtb_regx, rtb_input );
             doc.StatusChanged += new EventHandler( doc_StatusChanged );
@@ -137,10 +143,10 @@ namespace simple_regexer
             file_info = null;
             rtb_regx.Text = string.Empty;
             rtb_input.Text = string.Empty;
-            doc = new Document(rtb_regx, rtb_input);
             lblFileSaveStatus.Text = "unsaved";
             ss_count.Text = "0";
-            
+
+            InitDocument();
             matchCtrl.ClearAll();
         }
 
@@ -481,7 +487,6 @@ namespace simple_regexer
             }
         }
      
-
       
         //private void SyntaxHighlight()
         //{
