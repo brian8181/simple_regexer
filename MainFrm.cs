@@ -124,7 +124,27 @@ namespace simple_regexer
         }
         #endregion
 
-        #region Open & Save
+        #region New, Open & Save
+
+        // todo Work in Progress
+        /// <summary>
+        /// clear current doc
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnFileNew_Click(object sender, EventArgs e)
+        {
+            file_info = null;
+            rtb_regx.Text = string.Empty;
+            rtb_input.Text = string.Empty;
+            doc = new Document(rtb_regx, rtb_input);
+            lblFileSaveStatus.Text = "unsaved";
+            ss_count.Text = "0";
+            
+            matchCtrl.ClearAll();
+        }
+
+
         private void mnFileOpen_Click( object sender, EventArgs e )
         {
             FileOpenDialog();
@@ -363,9 +383,7 @@ namespace simple_regexer
         private void FormatMatchText( Color c )
         {
             // clear all
-            matchCtrl.GroupList.Items.Clear();
-            matchCtrl.MatchList.Items.Clear();
-            matchCtrl.GroupList.Groups.Clear();
+            matchCtrl.ClearAll();
 
             // get regex group names
             string[] groups = null;
@@ -462,6 +480,7 @@ namespace simple_regexer
                 auto_match = true;
             }
         }
+     
 
       
         //private void SyntaxHighlight()

@@ -41,6 +41,7 @@ namespace simple_regexer
             this.rtb_input = new System.Windows.Forms.RichTextBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnFileNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnFileOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.mnFileSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +92,16 @@ namespace simple_regexer
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // cmnMatchList
+            // 
+            cmnMatchList.Checked = true;
+            cmnMatchList.CheckOnClick = true;
+            cmnMatchList.CheckState = System.Windows.Forms.CheckState.Checked;
+            cmnMatchList.Name = "cmnMatchList";
+            cmnMatchList.Size = new System.Drawing.Size(204, 22);
+            cmnMatchList.Text = "Match List";
+            cmnMatchList.Click += new System.EventHandler(this.mnMatchList_Click);
             // 
             // splitContainer1
             // 
@@ -148,17 +159,7 @@ namespace simple_regexer
             this.cmnAutoMatch,
             this.cmnMatchSelected});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(205, 92);
-            // 
-            // cmnMatchList
-            // 
-            cmnMatchList.Checked = true;
-            cmnMatchList.CheckOnClick = true;
-            cmnMatchList.CheckState = System.Windows.Forms.CheckState.Checked;
-            cmnMatchList.Name = "cmnMatchList";
-            cmnMatchList.Size = new System.Drawing.Size(204, 22);
-            cmnMatchList.Text = "Match List";
-            cmnMatchList.Click += new System.EventHandler(this.mnMatchList_Click);
+            this.contextMenuStrip.Size = new System.Drawing.Size(205, 70);
             // 
             // cmnAutoMatch
             // 
@@ -216,6 +217,7 @@ namespace simple_regexer
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnFileNew,
             this.mnFileOpen,
             this.toolStripSeparator,
             this.mnFileSave,
@@ -226,45 +228,52 @@ namespace simple_regexer
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // mnFileNew
+            // 
+            this.mnFileNew.Name = "mnFileNew";
+            this.mnFileNew.Size = new System.Drawing.Size(152, 22);
+            this.mnFileNew.Text = "&New";
+            this.mnFileNew.Click += new System.EventHandler(this.mnFileNew_Click);
+            // 
             // mnFileOpen
             // 
             this.mnFileOpen.Image = ((System.Drawing.Image)(resources.GetObject("mnFileOpen.Image")));
             this.mnFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnFileOpen.Name = "mnFileOpen";
-            this.mnFileOpen.Size = new System.Drawing.Size(124, 22);
+            this.mnFileOpen.Size = new System.Drawing.Size(152, 22);
             this.mnFileOpen.Text = "&Open";
             this.mnFileOpen.Click += new System.EventHandler(this.mnFileOpen_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(149, 6);
             // 
             // mnFileSave
             // 
             this.mnFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mnFileSave.Image")));
             this.mnFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mnFileSave.Name = "mnFileSave";
-            this.mnFileSave.Size = new System.Drawing.Size(124, 22);
+            this.mnFileSave.Size = new System.Drawing.Size(152, 22);
             this.mnFileSave.Text = "&Save";
             this.mnFileSave.Click += new System.EventHandler(this.mnFileSave_Click);
             // 
             // mnFileSaveAs
             // 
             this.mnFileSaveAs.Name = "mnFileSaveAs";
-            this.mnFileSaveAs.Size = new System.Drawing.Size(124, 22);
+            this.mnFileSaveAs.Size = new System.Drawing.Size(152, 22);
             this.mnFileSaveAs.Text = "Save &As";
             this.mnFileSaveAs.Click += new System.EventHandler(this.mnFileSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnFileExit
             // 
             this.mnFileExit.Name = "mnFileExit";
-            this.mnFileExit.Size = new System.Drawing.Size(124, 22);
+            this.mnFileExit.Size = new System.Drawing.Size(152, 22);
             this.mnFileExit.Text = "E&xit";
             this.mnFileExit.Click += new System.EventHandler(this.mnFileExit_Click);
             // 
@@ -601,6 +610,7 @@ namespace simple_regexer
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem cmnMatchSelected;
         private MatchCtrl matchCtrl;
+        private System.Windows.Forms.ToolStripMenuItem mnFileNew;
     }
 }
 

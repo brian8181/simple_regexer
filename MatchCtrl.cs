@@ -14,5 +14,13 @@ namespace simple_regexer
         {
             InitializeComponent();
         }
+
+        public void ClearAll()
+        {
+            // clear all
+            GroupList.Items.Clear();
+            MatchList.Items.Clear();
+            GroupList.Groups.Clear();
+        }
     }
 }
