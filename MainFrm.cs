@@ -70,6 +70,7 @@ namespace simple_regexer
             auto_match = Properties.Settings.Current.auto_match;
             interval = Properties.Settings.Current.interval;
         }
+
         /// <summary>
         ///  commit current to file
         /// </summary>
@@ -81,6 +82,7 @@ namespace simple_regexer
             // go aheead a save both
             Properties.Settings.Current.Save();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -99,6 +101,7 @@ namespace simple_regexer
                 }
             }
         }
+
         /// <summary>
         /// save config settings
         /// </summary>
@@ -108,6 +111,7 @@ namespace simple_regexer
         {
             SaveSettings();
         }
+
         /// <summary>
         /// reload config for file
         /// </summary>
@@ -117,6 +121,7 @@ namespace simple_regexer
         {
             LoadSettings();
         }
+
         /// <summary>
         /// reset this restores defaults to pesistent storage
         /// </summary>
@@ -155,14 +160,17 @@ namespace simple_regexer
         {
             FileOpenDialog();
         }
+
         private void mnFileSave_Click( object sender, EventArgs e )
         {
             Save();
         }
+
         private void mnFileSaveAs_Click( object sender, EventArgs e )
         {
             FileSaveAsDialog();
         }
+
         /// <summary>
         /// open a file
         /// </summary>
@@ -198,9 +206,9 @@ namespace simple_regexer
                 file_info = new FileInfo( file );
                 doc.Open( file_info );
                 doc.Read();
-
             }
         }
+
         /// <summary>
         /// save file
         /// </summary>
@@ -217,6 +225,7 @@ namespace simple_regexer
                                 Properties.Resources.FILE_FILTER,
                                 "Create" );
         }
+
         /// <summary>
         ///  save a file with common options
         /// </summary>
@@ -227,6 +236,7 @@ namespace simple_regexer
                             Properties.Resources.FILE_FILTER,
                             "Saving As" );
         }
+
         /// <summary>
         /// save or creates a file
         /// </summary>
@@ -486,8 +496,7 @@ namespace simple_regexer
                 auto_match = true;
             }
         }
-     
-      
+           
         //private void SyntaxHighlight()
         //{
         //    string input = rtb_regx.Text;

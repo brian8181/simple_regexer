@@ -38,6 +38,7 @@ namespace simple_regexer
                 options[i].Checked = ( ( (int)values[i] & (int)Properties.Settings.Current.regx_options ) != 0 );
             }
         }
+
         /// <summary>
         /// load settings from current configuration
         /// </summary>
@@ -77,6 +78,7 @@ namespace simple_regexer
             iInterval.Value = Properties.Settings.Current.interval;
             iInterval.Enabled = Properties.Settings.Current.auto_match;
         }
+
         /// <summary>
         ///  set auto matching values
         /// </summary>
@@ -116,6 +118,7 @@ namespace simple_regexer
                     Properties.Settings.Current.regx_options |= (int)options[i].Tag;
             }
         }
+
         /// <summary>
         /// set expression font
         /// </summary>
@@ -135,6 +138,7 @@ namespace simple_regexer
                 lbl_exp_font.Text = font;
             }
         }
+
         /// <summary>
         /// set  input font
         /// </summary>
@@ -154,22 +158,27 @@ namespace simple_regexer
                 lbl_input_font.Text = font;
             }
         }
+
         private void lbl_forecolor_Click( object sender, EventArgs e )
         {
             SetColor( (Label)sender );
         }
+
         private void lbl_backcolor_Click( object sender, EventArgs e )
         {
             SetColor( (Label)sender );
         }
+
         private void lbl_hl_forecolor_Click( object sender, EventArgs e )
         {
             SetColor( (Label)sender );
         }
+
         private void lbl_hl_backcolor_Click( object sender, EventArgs e )
         {
             SetColor( (Label)sender );
         }
+
         /// <summary>
         /// set labels
         /// </summary>

@@ -31,6 +31,7 @@ namespace simple_regexer
                     return "New";
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -50,6 +51,7 @@ namespace simple_regexer
                 OnStatusChanged();
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -60,6 +62,7 @@ namespace simple_regexer
             this.exp = exp;
             this.input = input;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -73,6 +76,7 @@ namespace simple_regexer
                 changed_once = true;
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -86,6 +90,7 @@ namespace simple_regexer
                 changed_once = true;
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -95,6 +100,7 @@ namespace simple_regexer
             fi = new FileInfo( path );
             Open( fi );
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -108,6 +114,7 @@ namespace simple_regexer
             input.ModifiedChanged += new EventHandler( input_ModifiedChanged );
             OnStatusChanged();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,6 +146,7 @@ namespace simple_regexer
             }
             isDirty = false;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -166,6 +174,7 @@ namespace simple_regexer
             }
             isDirty = false;
         }
+
         /// <summary>
         /// 
         /// </summary>
