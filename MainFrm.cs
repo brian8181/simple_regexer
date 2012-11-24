@@ -23,17 +23,17 @@ namespace simple_regexer
         private MatchCollection mc = null;
         private FileInfo file_info = null;
         private Document doc = null;
+
         /// <summary>
         /// 
         /// </summary>
         public MainFrm()
         {
             InitializeComponent();
-            
+
             Properties.Settings.Current = Properties.Settings.Default;
             LoadSettings();
             InitDocument();
-           
         }
 
         public void InitDocument()
@@ -46,8 +46,7 @@ namespace simple_regexer
             doc = new Document( rtb_regx, rtb_input );
             doc.StatusChanged += new EventHandler( doc_StatusChanged );
         }
-         
-
+        
         private Color input_hl_forecolor;
         private Color input_hl_backcolor;
         private Color input_backcolor;
@@ -84,55 +83,71 @@ namespace simple_regexer
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mnToolEdit_Click( object sender, EventArgs e )
+       
+
+        private void optionsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OptionsDlg dlg = new OptionsDlg();
-            if(dlg.ShowDialog( this ) == DialogResult.OK)
+            if (dlg.ShowDialog(this) == DialogResult.OK)
             {
                 LoadSettings();
 
-                if(StdMsgBox.YesNo( "Do want to commit this configuartion now?" ) == DialogResult.Yes)
+                if (StdMsgBox.YesNo("Do want to commit this configuartion now?") == DialogResult.Yes)
                 {
                     SaveSettings();
                 }
             }
         }
 
-        /// <summary>
-        /// save config settings
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mnToolSave_Click( object sender, EventArgs e )
-        {
-            SaveSettings();
-        }
+        ///// 
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void mnToolEdit_Click(object sender, EventArgs e)
+        //{
+        //    OptionsDlg dlg = new OptionsDlg();
+        //    if (dlg.ShowDialog(this) == DialogResult.OK)
+        //    {
+        //        LoadSettings();
 
-        /// <summary>
-        /// reload config for file
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mnToolReload_Click( object sender, EventArgs e )
-        {
-            LoadSettings();
-        }
+        //        if (StdMsgBox.YesNo("Do want to commit this configuartion now?") == DialogResult.Yes)
+        //        {
+        //            SaveSettings();
+        //        }
+        //    }
+        //}
 
-        /// <summary>
-        /// reset this restores defaults to pesistent storage
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mnToolReset_Click( object sender, EventArgs e )
-        {
-            // resets but does not save 
-            Properties.Settings.Current.Reset();
-            Properties.Settings.Current = Properties.Settings.Default;
-        }
+        ///// <summary>
+        ///// save config settings
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void mnToolSave_Click( object sender, EventArgs e )
+        //{
+        //    SaveSettings();
+        //}
+
+        ///// <summary>
+        ///// reload config for file
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void mnToolReload_Click( object sender, EventArgs e )
+        //{
+        //    LoadSettings();
+        //}
+
+        ///// <summary>
+        ///// reset this restores defaults to pesistent storage
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void mnToolReset_Click( object sender, EventArgs e )
+        //{
+        //    // resets but does not save 
+        //    Properties.Settings.Current.Reset();
+        //    Properties.Settings.Current = Properties.Settings.Default;
+        //}
         #endregion
 
         #region New, Open & Save
@@ -289,6 +304,7 @@ namespace simple_regexer
             // used for clipboard
             //rtb_captured = rtb;
         }
+
         /// <summary>
         ///  regx box leave
         /// </summary>
@@ -299,6 +315,7 @@ namespace simple_regexer
             // used for clipboard
             //rtb_captured = null;
         }
+
         /// <summary>
         /// begin edit input text
         /// </summary>
@@ -311,6 +328,7 @@ namespace simple_regexer
             this.ss_status.Text = Properties.Resources.EDITING_INPUT;
             auto_match = false; // turn off 
         }
+
         /// <summary>
         /// end edit input text
         /// </summary>
@@ -321,6 +339,7 @@ namespace simple_regexer
             this.ss_status.Text = Properties.Resources.READY_WAITING;
             auto_match = mnToolsAutoMatch.Checked;
         }
+
         /// </summary>
         /// regx text changed - toggles the edit events 
         /// </summary>
@@ -437,6 +456,7 @@ namespace simple_regexer
             rtb_input.SelectionBackColor = input_backcolor;
             ss_count.Text = mc.Count.ToString();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -446,6 +466,7 @@ namespace simple_regexer
         {
             auto_match = mnToolsAutoMatch.Checked;
         }
+
         /// <summary>
         /// show \ hide match list
         /// </summary>
@@ -454,7 +475,6 @@ namespace simple_regexer
         private void mnMatchList_Click( object sender, EventArgs e )
         {
             //top_Spliter.Panel2Collapsed = !cmnMatchList.Checked;
-  
         }
 
         private void mnFileExit_Click( object sender, EventArgs e )
@@ -496,7 +516,12 @@ namespace simple_regexer
                 auto_match = true;
             }
         }
-           
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+                
         //private void SyntaxHighlight()
         //{
         //    string input = rtb_regx.Text;
