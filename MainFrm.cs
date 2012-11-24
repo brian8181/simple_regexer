@@ -82,9 +82,6 @@ namespace simple_regexer
             Properties.Settings.Current.Save();
         }
 
-        /// <summary>
-       
-
         private void optionsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OptionsDlg dlg = new OptionsDlg();
@@ -98,56 +95,6 @@ namespace simple_regexer
                 }
             }
         }
-
-        ///// 
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void mnToolEdit_Click(object sender, EventArgs e)
-        //{
-        //    OptionsDlg dlg = new OptionsDlg();
-        //    if (dlg.ShowDialog(this) == DialogResult.OK)
-        //    {
-        //        LoadSettings();
-
-        //        if (StdMsgBox.YesNo("Do want to commit this configuartion now?") == DialogResult.Yes)
-        //        {
-        //            SaveSettings();
-        //        }
-        //    }
-        //}
-
-        ///// <summary>
-        ///// save config settings
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void mnToolSave_Click( object sender, EventArgs e )
-        //{
-        //    SaveSettings();
-        //}
-
-        ///// <summary>
-        ///// reload config for file
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void mnToolReload_Click( object sender, EventArgs e )
-        //{
-        //    LoadSettings();
-        //}
-
-        ///// <summary>
-        ///// reset this restores defaults to pesistent storage
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void mnToolReset_Click( object sender, EventArgs e )
-        //{
-        //    // resets but does not save 
-        //    Properties.Settings.Current.Reset();
-        //    Properties.Settings.Current = Properties.Settings.Default;
-        //}
         #endregion
 
         #region New, Open & Save
@@ -373,6 +320,7 @@ namespace simple_regexer
             this.exp = rtb_regx.SelectedText.Replace( "\n", "" );
             TryMatch( exp );
         }
+
         /// <summary>
         ///   make regex matches
         /// </summary>
@@ -384,6 +332,7 @@ namespace simple_regexer
             this.exp = rtb_regx.Text.Replace( "\n", "" );
             TryMatch( exp );
         }
+
         /// <summary>
         /// make regex matches
         /// </summary>
@@ -501,8 +450,7 @@ namespace simple_regexer
                 }
             }
         }
-
-      
+              
         private void cmnAutoMatch_Click(object sender, EventArgs e)
         {
             if (auto_match)
@@ -521,36 +469,5 @@ namespace simple_regexer
         {
 
         }
-                
-        //private void SyntaxHighlight()
-        //{
-        //    string input = rtb_regx.Text;
-
-        //    MatchCollection mc = Regex.Matches( input, syntax, RegexOptions.Multiline );
-
-        //    int idx = rtb_regx.SelectionStart;
-        //    foreach( Match m in mc )
-        //    {
-        //        Group g = m.Groups["g1"];
-        //        rtb_regx.SelectionStart = g.Index;
-        //        rtb_regx.SelectionLength = g.Length;
-        //        rtb_regx.SelectionBackColor = Color.Yellow;
-
-        //        g = m.Groups["g2"];
-        //        rtb_regx.SelectionStart = g.Index;
-        //        rtb_regx.SelectionLength = g.Length;
-        //        rtb_regx.SelectionBackColor = Color.Green;
-
-        //        g = m.Groups["g3"];
-        //        rtb_regx.SelectionStart = g.Index;
-        //        rtb_regx.SelectionLength = g.Length;
-        //        rtb_regx.SelectionBackColor = Color.Blue;
-
-        //    }
-
-        //    rtb_regx.SelectionStart = idx;
-        //    rtb_regx.SelectionLength = 0;
-        //    rtb_regx.SelectionColor = Properties.Settings.Current.exp_backcolor;
-        //}
     }
 }
