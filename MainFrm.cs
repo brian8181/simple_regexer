@@ -55,6 +55,7 @@ namespace simple_regexer
         private int interval;
         // do here default is 0 
         private RegexOptions regx_options = RegexOptions.Multiline;
+
         /// <summary>
         /// load or reloads settings 
         /// </summary>
