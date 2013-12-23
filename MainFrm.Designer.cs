@@ -37,6 +37,7 @@ namespace simple_regexer
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmnAutoMatch = new System.Windows.Forms.ToolStripMenuItem();
             this.cmnMatchSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.matchCtrl = new simple_regexer.MatchCtrl();
             this.rtb_input = new System.Windows.Forms.RichTextBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,9 +58,10 @@ namespace simple_regexer
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnToolsAutoMatch = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,8 +73,6 @@ namespace simple_regexer
             this.ss_status = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblFileSaveStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.matchCtrl = new simple_regexer.MatchCtrl();
             cmnMatchList = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -144,9 +144,9 @@ namespace simple_regexer
             this.rtb_regx.Size = new System.Drawing.Size(462, 204);
             this.rtb_regx.TabIndex = 0;
             this.rtb_regx.Text = "";
+            this.rtb_regx.TextChanged += new System.EventHandler(this.rtb_TextChanged);
             this.rtb_regx.Enter += new System.EventHandler(this.rtb_regx_Enter);
             this.rtb_regx.Leave += new System.EventHandler(this.rtb_regx_Leave);
-            this.rtb_regx.TextChanged += new System.EventHandler(this.rtb_TextChanged);
             // 
             // contextMenuStrip
             // 
@@ -174,6 +174,14 @@ namespace simple_regexer
             this.cmnMatchSelected.Size = new System.Drawing.Size(205, 22);
             this.cmnMatchSelected.Text = "Match Selection";
             this.cmnMatchSelected.Click += new System.EventHandler(this.mnMatchSelected_Click);
+            // 
+            // matchCtrl
+            // 
+            this.matchCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchCtrl.Location = new System.Drawing.Point(0, 0);
+            this.matchCtrl.Name = "matchCtrl";
+            this.matchCtrl.Size = new System.Drawing.Size(365, 204);
+            this.matchCtrl.TabIndex = 0;
             // 
             // rtb_input
             // 
@@ -336,20 +344,13 @@ namespace simple_regexer
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnToolsAutoMatch,
+            this.toolStripMenuItem3,
             this.settingsToolStripMenuItem,
             this.optionsToolStripMenuItem1});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnToolsAutoMatch,
-            this.toolStripMenuItem3});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.settingsToolStripMenuItem.Text = "&Settings";
             // 
             // mnToolsAutoMatch
             // 
@@ -357,9 +358,8 @@ namespace simple_regexer
             this.mnToolsAutoMatch.CheckOnClick = true;
             this.mnToolsAutoMatch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnToolsAutoMatch.Name = "mnToolsAutoMatch";
-            this.mnToolsAutoMatch.Size = new System.Drawing.Size(137, 22);
+            this.mnToolsAutoMatch.Size = new System.Drawing.Size(152, 22);
             this.mnToolsAutoMatch.Text = "Auto Match";
-            this.mnToolsAutoMatch.Click += new System.EventHandler(this.mnToolsAutoMatch_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -367,8 +367,21 @@ namespace simple_regexer
             this.toolStripMenuItem3.CheckOnClick = true;
             this.toolStripMenuItem3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(137, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem3.Text = "Match List";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Text = "&Settings";
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem1.Text = "&Options...";
+            this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -396,6 +409,7 @@ namespace simple_regexer
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // timer
             // 
@@ -416,9 +430,9 @@ namespace simple_regexer
             // 
             // lbl
             // 
-            this.lbl.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lbl.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.lbl.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(59, 19);
@@ -426,9 +440,9 @@ namespace simple_regexer
             // 
             // ss_count
             // 
-            this.ss_count.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.ss_count.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.ss_count.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.ss_count.Name = "ss_count";
             this.ss_count.Size = new System.Drawing.Size(17, 19);
@@ -436,9 +450,9 @@ namespace simple_regexer
             // 
             // ss_status
             // 
-            this.ss_status.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.ss_status.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.ss_status.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.ss_status.Name = "ss_status";
             this.ss_status.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
@@ -448,9 +462,9 @@ namespace simple_regexer
             // 
             // lblFileSaveStatus
             // 
-            this.lblFileSaveStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.lblFileSaveStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.lblFileSaveStatus.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.lblFileSaveStatus.DoubleClickEnabled = true;
             this.lblFileSaveStatus.Name = "lblFileSaveStatus";
@@ -479,21 +493,6 @@ namespace simple_regexer
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip);
-            // 
-            // optionsToolStripMenuItem1
-            // 
-            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.optionsToolStripMenuItem1.Text = "&Options...";
-            this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
-            // 
-            // matchCtrl
-            // 
-            this.matchCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchCtrl.Location = new System.Drawing.Point(0, 0);
-            this.matchCtrl.Name = "matchCtrl";
-            this.matchCtrl.Size = new System.Drawing.Size(365, 204);
-            this.matchCtrl.TabIndex = 0;
             // 
             // MainFrm
             // 
@@ -559,7 +558,6 @@ namespace simple_regexer
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnToolsAutoMatch;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
@@ -567,11 +565,12 @@ namespace simple_regexer
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         public System.Windows.Forms.SplitContainer top_Spliter;
         private System.Windows.Forms.ToolStripMenuItem cmnAutoMatch;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem cmnMatchSelected;
         private MatchCtrl matchCtrl;
         private System.Windows.Forms.ToolStripMenuItem mnFileNew;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnToolsAutoMatch;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
 
