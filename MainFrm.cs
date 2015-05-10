@@ -466,15 +466,13 @@ namespace simple_regexer
             }
         }
 
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox frm = new AboutBox();
             frm.ShowDialog();
         }
+
+     
     }
 }
