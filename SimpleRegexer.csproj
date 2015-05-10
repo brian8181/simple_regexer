@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="description.txt" />
+    <Content Include="favicon.ico" />
     <Content Include="README.txt" />
     <Content Include="Todo.txt" />
   </ItemGroup>

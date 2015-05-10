@@ -1,3 +1,10 @@
+
+RC 1.2
+
+	* figure of what MatchList does
+	* change about box
+
+
 1. groups need to be displayed in someway.
 2. file save should save both panes or seperart pane.
 
