@@ -1,1 +1,0 @@
-http://bkp-online.homelinux.org/wiki/index.php/SimpleRegxer

@@ -30,7 +30,6 @@ namespace simple_regexer
         public MainFrm()
         {
             InitializeComponent();
-
             Properties.Settings.Current = Properties.Settings.Default;
             LoadSettings();
             InitDocument();
@@ -43,26 +42,26 @@ namespace simple_regexer
             // empty match
             mc = Regex.Matches("x", "y");
             rtb_input.SelectionProtected = false;
-            doc = new Document( rtb_regx, rtb_input );
-            doc.StatusChanged += new EventHandler( doc_StatusChanged );
+            doc = new Document(rtb_regx, rtb_input);
+            doc.StatusChanged += new EventHandler(doc_StatusChanged);
         }
-        
+
         private Color input_hl_forecolor;
         private Color input_hl_backcolor;
         private Color input_backcolor;
         private Color input_forecolor;
         private volatile bool auto_match;
         private int interval;
+
         // do here default is 0 
         private RegexOptions regx_options = RegexOptions.Multiline;
-
         /// <summary>
         /// load or reloads settings 
         /// </summary>
         private void LoadSettings()
         {
             rtb_regx.Font = Properties.Settings.Current.exp_font;
-            rtb_input.Font = Properties.Settings.Current.input_font; 
+            rtb_input.Font = Properties.Settings.Current.input_font;
             input_backcolor = Properties.Settings.Current.input_backcolor;
             input_forecolor = Properties.Settings.Current.input_forecolor;
             input_hl_backcolor = Properties.Settings.Current.input_hl_backcolor;
@@ -89,7 +88,6 @@ namespace simple_regexer
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
                 LoadSettings();
-
                 if (StdMsgBox.YesNo("Do want to commit this configuartion now?") == DialogResult.Yes)
                 {
                     SaveSettings();
@@ -99,7 +97,6 @@ namespace simple_regexer
         #endregion
 
         #region New, Open & Save
-
         // todo Work in Progress
         /// <summary>
         /// clear current doc
@@ -113,23 +110,21 @@ namespace simple_regexer
             rtb_input.Text = string.Empty;
             lblFileSaveStatus.Text = "unsaved";
             ss_count.Text = "0";
-
             InitDocument();
             matchCtrl.ClearAll();
         }
 
-
-        private void mnFileOpen_Click( object sender, EventArgs e )
+        private void mnFileOpen_Click(object sender, EventArgs e)
         {
             FileOpenDialog();
         }
 
-        private void mnFileSave_Click( object sender, EventArgs e )
+        private void mnFileSave_Click(object sender, EventArgs e)
         {
             Save();
         }
 
-        private void mnFileSaveAs_Click( object sender, EventArgs e )
+        private void mnFileSaveAs_Click(object sender, EventArgs e)
         {
             FileSaveAsDialog();
         }
@@ -139,17 +134,16 @@ namespace simple_regexer
         /// </summary>
         public void FileOpenDialog()
         {
-            if(doc.isDirty)
+            if (doc.isDirty)
             {
-                DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
-                        Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
+                DialogResult res = MessageBox.Show(Properties.Resources.SAVE_PROMPT,
+                        Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo);
                 // save the working file
-                if(res == DialogResult.OK)
+                if (res == DialogResult.OK)
                 {
                     Save();
                 }
             }
-
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = Properties.Resources.FILE_FILTER;
             dlg.FilterIndex = 2;
@@ -161,13 +155,12 @@ namespace simple_regexer
             dlg.Multiselect = false;
             dlg.SupportMultiDottedExtensions = true;
             dlg.InitialDirectory = Environment.GetFolderPath
-                ( Environment.SpecialFolder.MyDocuments );
-                  
-            if(dlg.ShowDialog() == DialogResult.OK)
+                (Environment.SpecialFolder.MyDocuments);
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string file = dlg.FileName;
-                file_info = new FileInfo( file );
-                doc.Open( file_info );
+                file_info = new FileInfo(file);
+                doc.Open(file_info);
                 doc.Read();
             }
         }
@@ -180,13 +173,13 @@ namespace simple_regexer
         private void Save()
         {
             // just save if exsit
-            if(file_info != null && file_info.Exists)
+            if (file_info != null && file_info.Exists)
                 doc.Write();
             else
-                FileSaveDialog( true,
+                FileSaveDialog(true,
                                 Properties.Resources.DEFAULT_EXT,
                                 Properties.Resources.FILE_FILTER,
-                                "Create" );
+                                "Create");
         }
 
         /// <summary>
@@ -194,10 +187,10 @@ namespace simple_regexer
         /// </summary>
         public void FileSaveAsDialog()
         {
-            FileSaveDialog( true,
+            FileSaveDialog(true,
                             Properties.Resources.DEFAULT_EXT,
                             Properties.Resources.FILE_FILTER,
-                            "Saving As" );
+                            "Saving As");
         }
 
         /// <summary>
@@ -206,7 +199,7 @@ namespace simple_regexer
         /// <param name="creating"></param>
         /// <param name="ext"></param>
         /// <param name="filter"></param>
-        public void FileSaveDialog( bool creating, string ext, string filter, string title )
+        public void FileSaveDialog(bool creating, string ext, string filter, string title)
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Title = title;
@@ -220,31 +213,30 @@ namespace simple_regexer
             dlg.ValidateNames = true;
             dlg.RestoreDirectory = true;
             dlg.SupportMultiDottedExtensions = true;
-            dlg.InitialDirectory = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments );
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //dlg.FileName = file_info.FullName;
-
-            if(dlg.ShowDialog() == DialogResult.OK)
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string file = dlg.FileName;
-                file_info = new FileInfo( file );
-                doc.Open( file_info );
+                file_info = new FileInfo(file);
+                doc.Open(file_info);
                 doc.Write();
             }
         }
 
-        void doc_StatusChanged( object sender, EventArgs e )
+        void doc_StatusChanged(object sender, EventArgs e)
         {
             lblFileSaveStatus.Text = doc.Name + " : " + (doc.isDirty ? "updated" : "saved");
         }
-        #endregion
 
+        #endregion
         #region RichTextBox Events
         /// <summary>
         ///  regx box entered
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rtb_regx_Enter( object sender, EventArgs e )
+        private void rtb_regx_Enter(object sender, EventArgs e)
         {
             //RichTextBox rtb = (RichTextBox)sender;
             //rtb_regx_focus = rtb;
@@ -252,74 +244,70 @@ namespace simple_regexer
             // used for clipboard
             //rtb_captured = rtb;
         }
-
         /// <summary>
         ///  regx box leave
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rtb_regx_Leave( object sender, EventArgs e )
+        private void rtb_regx_Leave(object sender, EventArgs e)
         {
             // used for clipboard
             //rtb_captured = null;
         }
-
         /// <summary>
         /// begin edit input text
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rtb_input_Enter( object sender, EventArgs e )
+        private void rtb_input_Enter(object sender, EventArgs e)
         {
-            FormatMatchText( input_backcolor );
+            FormatMatchText(input_backcolor);
             timer.Enabled = false;
             this.ss_status.Text = Properties.Resources.EDITING_INPUT;
             auto_match = false; // turn off 
         }
-
         /// <summary>
         /// end edit input text
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rtb_input_Leave( object sender, EventArgs e )
+        private void rtb_input_Leave(object sender, EventArgs e)
         {
             this.ss_status.Text = Properties.Resources.READY_WAITING;
             auto_match = mnToolsAutoMatch.Checked;
         }
-
         /// </summary>
         /// regx text changed - toggles the edit events 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rtb_TextChanged( object sender, EventArgs e )
+        private void rtb_TextChanged(object sender, EventArgs e)
         {
             //SyntaxHighlight();
-            if(auto_match)
+            if (auto_match)
             {
                 ss_status.Text = Properties.Resources.EDITING_EXP;
                 timer.Enabled = true;
             }
         }
         #endregion
-
         /// <summary>
         /// timer tick,  edit timer timeout
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timer_Tick( object sender, EventArgs e )
+        private void timer_Tick(object sender, EventArgs e)
         {
-            if(auto_match && timer.Enabled)
+            if (auto_match && timer.Enabled)
             {
-                this.Invoke( new VoidDelegate( TryMatch ) );
+                this.Invoke(new VoidDelegate(TryMatch));
             }
         }
+
         public void TryMatchSelected()
         {
-            this.exp = rtb_regx.SelectedText.Replace( "\n", "" );
-            TryMatch( exp );
+            this.exp = rtb_regx.SelectedText.Replace("\n", "");
+            TryMatch(exp);
         }
 
         /// <summary>
@@ -327,30 +315,31 @@ namespace simple_regexer
         /// </summary>
         public void TryMatch()
         {
-            if(rtb_regx != null && string.IsNullOrEmpty( rtb_regx.Text ))
+            if (rtb_regx != null && string.IsNullOrEmpty(rtb_regx.Text))
                 return;
             //ResetTextColor( rtb_regx );
-            this.exp = rtb_regx.Text.Replace( "\n", "" );
-            TryMatch( exp );
+            this.exp = rtb_regx.Text.Replace("\n", "");
+            TryMatch(exp);
         }
 
         /// <summary>
         /// make regex matches
         /// </summary>
-        private void TryMatch( string exp )
+        private void TryMatch(string exp)
         {
             this.timer.Enabled = false;
             this.input = this.rtb_input.Text;
-            FormatMatchText( input_backcolor );
-            if(exp != string.Empty && input != string.Empty)
+            FormatMatchText(input_backcolor);
+            if (exp != string.Empty && input != string.Empty)
             {
                 try
                 {
-                    regx = new Regex( exp, regx_options );
-                    mc = regx.Matches( input );
+                    regx = new Regex(exp, regx_options);
+                    mc = regx.Matches(input);
                     ss_status.Text = Properties.Resources.MATCHED;
-                    FormatMatchText( input_hl_backcolor );
-                } catch(ArgumentException)
+                    FormatMatchText(input_hl_backcolor);
+                }
+                catch (ArgumentException)
                 {
                     ss_status.Text = Properties.Resources.INVALID_EXPRESSION;
                 }
@@ -365,40 +354,35 @@ namespace simple_regexer
         /// highlight matches                                                                                   
         /// </summary>
         /// <param name="c"></param>
-        private void FormatMatchText( Color c )
+        private void FormatMatchText(Color c)
         {
             // clear all
             matchCtrl.ClearAll();
-
             // get regex group names
             string[] groups = null;
-            if(regx != null)
+            if (regx != null)
             {
                 groups = regx.GetGroupNames();
-                foreach(string g in groups)
+                foreach (string g in groups)
                 {
-                    matchCtrl.GroupList.Groups.Add( g, g );
+                    matchCtrl.GroupList.Groups.Add(g, g);
                 }
             }
-            
-            foreach(Match m in mc)
+            foreach (Match m in mc)
             {
                 rtb_input.SelectionStart = m.Index;
                 rtb_input.SelectionLength = m.Length;
                 rtb_input.SelectionBackColor = c;
-
-                ListViewItem item = matchCtrl.MatchList.Items.Add( m.Value );
-                item.SubItems.Add( m.Index.ToString() );
-                item.SubItems.Add( m.Length.ToString() );
-
-
-                foreach(string g in groups)
+                ListViewItem item = matchCtrl.MatchList.Items.Add(m.Value);
+                item.SubItems.Add(m.Index.ToString());
+                item.SubItems.Add(m.Length.ToString());
+                foreach (string g in groups)
                 {
-                     Group exp_grp = m.Groups[g];
-                     item = matchCtrl.GroupList.Items.Add( exp_grp.Value );
-                     matchCtrl.GroupList.Groups[g].Items.Add( item );
-                     item.SubItems.Add( exp_grp.Index.ToString() );
-                     item.SubItems.Add( exp_grp.Length.ToString() );
+                    Group exp_grp = m.Groups[g];
+                    item = matchCtrl.GroupList.Items.Add(exp_grp.Value);
+                    matchCtrl.GroupList.Groups[g].Items.Add(item);
+                    item.SubItems.Add(exp_grp.Index.ToString());
+                    item.SubItems.Add(exp_grp.Length.ToString());
                 }
             }
             rtb_input.SelectionStart = 0;
@@ -412,7 +396,7 @@ namespace simple_regexer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mnToolsAutoMatch_Click( object sender, EventArgs e )
+        private void mnToolsAutoMatch_Click(object sender, EventArgs e)
         {
             auto_match = mnToolsAutoMatch.Checked;
         }
@@ -422,36 +406,35 @@ namespace simple_regexer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mnMatchList_Click( object sender, EventArgs e )
+        private void mnMatchList_Click(object sender, EventArgs e)
         {
             //top_Spliter.Panel2Collapsed = !cmnMatchList.Checked;
         }
-
-        private void mnFileExit_Click( object sender, EventArgs e )
+        private void mnFileExit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void mnMatchSelected_Click( object sender, EventArgs e )
+        private void mnMatchSelected_Click(object sender, EventArgs e)
         {
             timer.Enabled = false; // disable timer
             TryMatchSelected();
         }
 
-        private void MainFrm_FormClosing( object sender, FormClosingEventArgs e )
+        private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(doc.isDirty)
+            if (doc.isDirty)
             {
-                DialogResult res = MessageBox.Show( Properties.Resources.SAVE_PROMPT,
-                             Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo );
+                DialogResult res = MessageBox.Show(Properties.Resources.SAVE_PROMPT,
+                             Properties.Resources.SAVE_PROMPT_CAPTION, MessageBoxButtons.YesNo);
                 // save the working file
-                if(res == DialogResult.OK)
+                if (res == DialogResult.OK)
                 {
                     Save();
                 }
             }
         }
-              
+
         private void cmnAutoMatch_Click(object sender, EventArgs e)
         {
             if (auto_match)
@@ -466,13 +449,10 @@ namespace simple_regexer
             }
         }
 
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox frm = new AboutBox();
             frm.ShowDialog();
         }
-
-     
     }
 }
