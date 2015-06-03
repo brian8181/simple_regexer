@@ -3,6 +3,8 @@ RC 1.2
 
 	* figure of what MatchList does
 	* change about box
+	* Document is screwed if .rgx file is invalid!
+	* design issue: should not MainFrm.file_info be part of the Document class?
 
 
 1. groups need to be displayed in someway.

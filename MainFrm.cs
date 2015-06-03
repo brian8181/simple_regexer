@@ -27,12 +27,18 @@ namespace simple_regexer
         /// <summary>
         /// 
         /// </summary>
-        public MainFrm()
+        public MainFrm(string[] args)
         {
             InitializeComponent();
             Properties.Settings.Current = Properties.Settings.Default;
             LoadSettings();
             InitDocument();
+
+            //BKP added 6-3-2015
+            if (args.Length > 0 && args[0] != null)
+            {
+                OpenDocument(args[0]);
+            }
         }
 
         public void InitDocument()
@@ -44,6 +50,7 @@ namespace simple_regexer
             rtb_input.SelectionProtected = false;
             doc = new Document(rtb_regx, rtb_input);
             doc.StatusChanged += new EventHandler(doc_StatusChanged);
+           
         }
 
         private Color input_hl_forecolor;
@@ -159,10 +166,14 @@ namespace simple_regexer
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string file = dlg.FileName;
-                file_info = new FileInfo(file);
-                doc.Open(file_info);
-                doc.Read();
+                OpenDocument(file);
             }
+        }
+
+        private void OpenDocument(string file)
+        {
+            doc.Open(file);
+            doc.Read();
         }
 
         /// <summary>
