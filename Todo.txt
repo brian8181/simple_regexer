@@ -5,6 +5,7 @@ RC 1.2
 	* change about box
 	* Document is screwed if .rgx file is invalid!
 	* design issue: should not MainFrm.file_info be part of the Document class?
+	* how about adding drag and drop on main windows, like hashbrown works!
 
 
 1. groups need to be displayed in someway.
